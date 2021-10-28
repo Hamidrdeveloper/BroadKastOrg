@@ -1,0 +1,6 @@
+{
+  "clientId": "hamidrdeveloper@gmail.com",
+  "apiKey": "AIzaSyCwLRQsKgDfgiH_lbkfZiUpOh1n72q34Bw",
+  "scope": "https://www.googleapis.com/auth/calendar",
+  "discoveryDocs": ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]
+}
