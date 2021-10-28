@@ -48,11 +48,12 @@ export const Navigation = () => {
           },
         }}>
 
-<Stack.Screen name="Settingcreen" component={Settingcreen} />
         <Stack.Screen name="Wellcome" component={WellcomeScreen} />
         <Stack.Screen name="Home" component={Home}
 
         options={{  gesturesEnabled: false, swipeEnabled: false}}/>
+        <Stack.Screen name="Settingcreen" component={Settingcreen} />
+
           <Stack.Screen name="EventCreateScreen" component={EventCreateScreen} />
         <Stack.Screen name="NotifyScreen" component={NotifyScreen} />
         <Stack.Screen name="ReminderScreen" component={ReminderScreen} />
