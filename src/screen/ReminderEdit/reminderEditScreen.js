@@ -390,7 +390,7 @@ if (form_to === 5) {
           <ViewSwitch>
             <TouchableOpacity
               onPress={() => {
-                showDatepicker();
+                onToggleSwitchTime();
               }}>
               <TextCenterName>{textDate}</TextCenterName>
             </TouchableOpacity>
