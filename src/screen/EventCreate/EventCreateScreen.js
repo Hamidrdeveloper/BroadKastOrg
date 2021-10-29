@@ -201,6 +201,7 @@ if(typTimeSave=='T'){
 
   const showDatepicker = () => {
     setTypTimeSave('T')
+    setTitleTime("Date")
       setShow(false);
     if(arrayReaderTime!=null){
     if (arrayReaderTime.length<4) {

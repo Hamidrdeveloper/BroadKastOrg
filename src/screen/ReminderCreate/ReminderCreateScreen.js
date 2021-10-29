@@ -152,11 +152,14 @@ export const ReminderScreen = ({navigation}) => {
     }
   };
   const showDatepicker = () => {
-    setTypTimeSave('T');
     setTitleTime("Date")
+    form_to=1
+    setTypTimeSave('T');
+    
     // setShow(false);
+    
     setMode('date');
-form_to=1
+
     setShow(true);
   };
   const onChange = ( selectedDate) => {
@@ -365,7 +368,7 @@ if (form_to === 5) {
             <ViewSwitch>
               <TouchableOpacity
                 onPress={() => {
-                  showDatepicker();
+                  onToggleSwitchTime();
                 }}>
                 <TextCenterName>{textDate}</TextCenterName>
               </TouchableOpacity>

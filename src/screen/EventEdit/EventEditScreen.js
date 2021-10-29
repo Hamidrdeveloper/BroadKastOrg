@@ -177,6 +177,7 @@ export const EventEditScreen = ({navigation}) => {
 
   const showDatepicker = () => {
     setTypTimeSave('T');
+    setTitleTime("Date")
     setShow(false);
     if (arrayReaderTime != null) {
       if (arrayReaderTime.length < 4) {
@@ -218,7 +219,7 @@ export const EventEditScreen = ({navigation}) => {
       dateArray.date = dateValue;
     } else {
       if (form_to == 2) {
-        setTitleTime("Time Date")
+        setTitleTime("Date")
 
         setDate(new Date(1598051730000));
         const currentDate = selectedDate;
