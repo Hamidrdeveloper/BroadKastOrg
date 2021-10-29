@@ -379,9 +379,7 @@ if (form_to === 5) {
                             trackColor={{true: colors.text.blueLight, false: colors.text.blueLightGray}}
 
             value={isSwitchOnTime}
-            onValueChange={() => {
-              onToggleSwitchTime();
-            }}
+          
           />
         </ViewRowEventAdd>
         {isSwitchOnTime?
@@ -396,7 +394,7 @@ if (form_to === 5) {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                showTimepicker();
+                onToggleSwitchTime();
               }}>
               <TextCenterName>{`${textTimeFrom}-${textTimeTo}`}</TextCenterName>
             </TouchableOpacity>
