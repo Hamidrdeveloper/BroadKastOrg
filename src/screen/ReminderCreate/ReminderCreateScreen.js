@@ -144,7 +144,7 @@ export const ReminderScreen = ({navigation}) => {
     }, 100);
   }, [arrayLocationSelectRemind]);
   const onSelectTypeTime = (date) => {
-
+    setTitleTime("Date")
     if (typTimeSave == 'T') {
       onChange( date);
     } else {
@@ -153,6 +153,7 @@ export const ReminderScreen = ({navigation}) => {
   };
   const showDatepicker = () => {
     setTypTimeSave('T');
+    setTitleTime("Date")
     // setShow(false);
     setMode('date');
 form_to=1
