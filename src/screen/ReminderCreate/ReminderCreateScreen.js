@@ -144,7 +144,7 @@ export const ReminderScreen = ({navigation}) => {
     }, 100);
   }, [arrayLocationSelectRemind]);
   const onSelectTypeTime = (date) => {
-    setTitleTime("Date")
+
     if (typTimeSave == 'T') {
       onChange( date);
     } else {
@@ -152,14 +152,10 @@ export const ReminderScreen = ({navigation}) => {
     }
   };
   const showDatepicker = () => {
-    setTitleTime("Date")
-    form_to=1
     setTypTimeSave('T');
-    
     // setShow(false);
-    
     setMode('date');
-
+form_to=1
     setShow(true);
   };
   const onChange = ( selectedDate) => {
@@ -368,11 +364,14 @@ if (form_to === 5) {
             <ViewSwitch>
               <TouchableOpacity
                 onPress={() => {
-                  onToggleSwitchTime();
+                  showDatepicker();
                 }}>
                 <TextCenterName>{textDate}</TextCenterName>
               </TouchableOpacity>
               <TouchableOpacity
+               onPress={() => {
+                showDatepicker();
+              }}
               >
                 <TextCenterName>{`${textTimeFrom}-${textTimeTo}`}</TextCenterName>
               </TouchableOpacity>
