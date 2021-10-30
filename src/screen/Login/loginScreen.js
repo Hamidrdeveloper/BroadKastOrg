@@ -183,6 +183,7 @@ export const LoginScreen = ({navigation}) => {
     }
   }, 100); }, [isLogin]);
   useEffect(() => {
+    console.log("================================================================================================>",value+"==>"+ password);
     if(value=="123456"){
       loginUser(value, password);
                   setOTPActive(false);
