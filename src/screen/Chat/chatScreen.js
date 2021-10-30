@@ -509,6 +509,17 @@ if(groupShowData.event.id){
         </TouchableOpacity>
 
       </ViewTopRowHeader>
+      
+      <View style={{ width: `100%`, flexDirection: 'row',backgroundColor:"#000" ,height:150 }}>
+        <View>
+          <Text>{titleDatePollTime}</Text>
+          <Text>{titleTimePollTime}</Text>
+        </View>
+        <View style={{ width: 1, height: `80%`, backgroundColor: "#000", }} />
+        <View>
+          <Text>{titlePollLocation}</Text>
+        </View>
+      </View>
       <View
         style={{
           backgroundColor: '#eee',
@@ -523,16 +534,6 @@ if(groupShowData.event.id){
             return (<View><ItemAvatar index={index} /></View>)
           }) : null
         }
-      </View>
-      <View style={{ width: `100%`, flexDirection: 'row',backgroundColor:"#000" ,height:150 }}>
-        <View>
-          <Text>{titleDatePollTime}</Text>
-          <Text>{titleTimePollTime}</Text>
-        </View>
-        <View style={{ width: 1, height: `80%`, backgroundColor: "#000", }} />
-        <View>
-          <Text>{titlePollLocation}</Text>
-        </View>
       </View>
       <GiftedChat
         messages={messages}
