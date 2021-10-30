@@ -87,7 +87,7 @@ const ChatScreen = ({ navigation }) => {
     setMessages([]);
     setTimeout(() => {
 
-if(groupShowData.event.id){
+if(groupShowData.event!=null){
   locationPollResultUser(groupShowData.event.id)
   timePollResultUser(groupShowData.event.id)
 
