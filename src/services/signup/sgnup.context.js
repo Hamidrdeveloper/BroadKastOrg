@@ -199,19 +199,17 @@ export const AuthenticationContextProvider = ({children}) => {
       .then(results => {
         setIsLoadingSign(false);
 
-        if (results != '') {
+        if (results.data != null) {
           console.log(results.data)
-          if(
-            results.data.hasPassword==false
-          ){
+        
             _storData(results.data)
-          }
+          
         
           TOKEN.data=results.data.token;
           setUser(results);
 
           setIsValid(true);
-          setIsLogin(true);
+     
         } else {
           setIsValid(false);
           setIsLogin(false);
@@ -247,6 +245,7 @@ export const AuthenticationContextProvider = ({children}) => {
 
  const  loginUser=(code,phone) =>{
   setIsLoadingSign(true);
+  setIsLogin(false);
   poneConfirm(code, phone)
   .then(results => {
     setIsLoadingSign(false);
