@@ -201,7 +201,12 @@ export const AuthenticationContextProvider = ({children}) => {
 
         if (results != '') {
           console.log(results.data)
-          _storData(results.data)
+          if(
+            results.data.hasPassword==false
+          ){
+            _storData(results.data)
+          }
+        
           TOKEN.data=results.data.token;
           setUser(results);
 
