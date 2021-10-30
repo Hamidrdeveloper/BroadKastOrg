@@ -79,9 +79,10 @@ const ChatScreen = ({ navigation }) => {
   const { locationPollResultUser,timePollResultUser,locPollResultData,timePollResultData } = useContext(EventsContext)
   const { user } = useContext(AuthenticationContext)
   const { fileUploadUser, fileChat, isSndFileChat } = useContext(FileUploadContext)
-  const [titleTimePollTime, setTitleTimePollTime] = useState('');
-  const [titleDatePollTime, setTitleDatePollTime] = useState('');
-  const [titlePollLocation, setTitlePollLocation] = useState('');
+  const [titleTimePollTime, setTitleTimePollTime] = useState('6:00 PM - 11:00 PM');
+  const [titleDatePollTime, setTitleDatePollTime] = useState('Saturday\n Aug 29');
+  const [titlePollLocation, setTitlePollLocation] = useState('McCarren- Park');
+  const [disPollLocation, setDisPollLocation] = useState('776 Lorimer St.Brookiyn, Ny 112222');
   useEffect(() => {
     setMessages([]);
     setTimeout(() => {
@@ -513,13 +514,14 @@ if(groupShowData.event.id){
       </ViewTopRowHeader>
       
       <View style={{ width: `100%`, flexDirection: 'row',backgroundColor:`${colors.ui.quaternary}` ,height:150 }}>
-        <View>
-          <Text>{titleDatePollTime}</Text>
-          <Text>{titleTimePollTime}</Text>
+        <View  style={{height:`100%`,width:`40%`}}>
+          <Text  style={{color:"#000",fontSize:20,textAlign:'center'}}>{titleDatePollTime}</Text>
+          <Text style={{color:"#000",fontSize:13,textAlign:'center'} }>{titleTimePollTime}</Text>
         </View>
         <View style={{ width: 1, height: `80%`, backgroundColor: `#000`, }} />
-        <View>
-          <Text>{titlePollLocation}</Text>
+        <View  style={{height:`100%`,width:`40%`}}>
+          <Text style={{color:"#000",fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
+          <Text style={{color:"#000",fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
         </View>
       </View>
       <View
