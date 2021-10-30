@@ -206,7 +206,7 @@ export const AuthenticationContextProvider = ({children}) => {
           setUser(results);
 
           setIsValid(true);
-          // setIsLogin(true);
+          setIsLogin(true);
         } else {
           setIsValid(false);
           setIsLogin(false);
