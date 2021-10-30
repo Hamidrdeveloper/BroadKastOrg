@@ -513,7 +513,7 @@ if(groupShowData.event.id){
 
       </ViewTopRowHeader>
       
-      <View style={{ width: `100%`, flexDirection: 'row',backgroundColor:`${colors.ui.quaternary}` ,height:150 }}>
+      <View style={{ width: `100%`, flexDirection: 'row',backgroundColor:`${colors.ui.quaternary}` ,height:150,alignItems:"center" }}>
         <View  style={{height:`100%`,width:`50%`}}>
           <Text  style={{color:"#000",fontSize:20,textAlign:'center'}}>{titleDatePollTime}</Text>
           <Text style={{color:"#000",fontSize:13,textAlign:'center'} }>{titleTimePollTime}</Text>
