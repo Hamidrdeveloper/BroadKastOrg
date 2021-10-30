@@ -34,6 +34,8 @@ import { Alert } from 'react-native';
 import { PermissionsAndroid } from 'react-native';
 import { Platform } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native';
+import { colors } from "../../infrastructure/theme/colors";
+
 let options = {
   title: 'You can choose one image',
   noData: true,
@@ -510,12 +512,12 @@ if(groupShowData.event.id){
 
       </ViewTopRowHeader>
       
-      <View style={{ width: `100%`, flexDirection: 'row',backgroundColor:"#000" ,height:150 }}>
+      <View style={{ width: `100%`, flexDirection: 'row',backgroundColor:`${colors.ui.quaternary}` ,height:150 }}>
         <View>
           <Text>{titleDatePollTime}</Text>
           <Text>{titleTimePollTime}</Text>
         </View>
-        <View style={{ width: 1, height: `80%`, backgroundColor: "#000", }} />
+        <View style={{ width: 1, height: `80%`, backgroundColor: `#000`, }} />
         <View>
           <Text>{titlePollLocation}</Text>
         </View>
