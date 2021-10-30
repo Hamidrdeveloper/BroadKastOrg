@@ -332,7 +332,7 @@ export const locationPollAnswer = (id) => {
 
     var config = {
         method: 'post',
-        url: host + `​/api/v1/Event/LocationPollAnswer?id=${id}`,
+        url: host + `/api/v1/Event/LocationPollAnswer?id=${id}`,
         headers: {
             'Authorization': `Bearer ${TOKEN.data}`,
             'Content-Type': 'application/json'
@@ -342,7 +342,7 @@ export const locationPollAnswer = (id) => {
 
     return axios(config)
         .then(function (response) {
-            console.log('response', JSON.stringify(response.data));
+           
             return response.data;
 
         })
