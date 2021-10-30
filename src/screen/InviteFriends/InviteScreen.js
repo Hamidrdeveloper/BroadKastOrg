@@ -67,11 +67,15 @@ export const  InvateScreen=({navigation})=> {
   useEffect(() => {
 
     setTimeout(() => {
-      var i = friends.map(object => {
-        return {...object, desc: 0}
-       });
- console.log(i)
- setFriends(i)
+
+      if(friends!=null){
+        var i = friends.map(object => {
+          return {...object, desc: 0}
+         });
+   console.log(i)
+   setFriends(i)
+      }
+    
  console.log("VALID",listValidUser);
     setArrayValid([])
     setArrayUnValid(allContacts)
