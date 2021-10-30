@@ -524,7 +524,7 @@ if(groupShowData.event.id){
           }) : null
         }
       </View>
-      <View style={{ width: `100%`, flexDirection: 'row' }}>
+      <View style={{ width: `100%`, flexDirection: 'row',backgroundColor:"#000" ,height:150 }}>
         <View>
           <Text>{titleDatePollTime}</Text>
           <Text>{titleTimePollTime}</Text>
