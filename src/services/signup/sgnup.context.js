@@ -250,9 +250,12 @@ export const AuthenticationContextProvider = ({children}) => {
   .then(results => {
     setIsLoadingSign(false);
 
-    if (results != '') {
+    if (results.data != null) {
+      if(results.data.hasPassword==false){
         clearStorage();
-      _storData(results.data)
+        _storData(results.data)
+      }
+        
       TOKEN.data=results.data.token;
       setUser(results);
       console.log(results)
