@@ -513,7 +513,7 @@ if(groupShowData.event!=null){
 
       </ViewTopRowHeader>
       
-      <View style={{ width: `100%`, flexDirection: 'row',backgroundColor:`${colors.text.blueLight}` ,height:100,alignItems:"center" }}>
+      {/* <View style={{ width: `100%`, flexDirection: 'row',backgroundColor:`${colors.text.blueLight}` ,height:100,alignItems:"center" }}>
         <View  style={{height:`100%`,width:`50%`,justifyContent:'center'}}>
           <Text  style={{color:"#000",fontSize:20,textAlign:'center'}}>{titleDatePollTime}</Text>
           <Text style={{color:"#000",fontSize:13,textAlign:'center'} }>{titleTimePollTime}</Text>
@@ -538,7 +538,7 @@ if(groupShowData.event!=null){
             return (<View><ItemAvatar index={person} /></View>)
           }) : null
         }
-      </View>
+      </View> */}
       <GiftedChat
         messages={messages}
         onSend={(messages) => onSend(messages)}
