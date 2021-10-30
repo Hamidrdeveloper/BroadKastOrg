@@ -526,7 +526,6 @@ if(groupShowData.event!=null){
       </View>
       <View
         style={{
-          backgroundColor: '#eee',
           height: 50,
           flexDirection: 'row-reverse',
           alignItems: 'center',
