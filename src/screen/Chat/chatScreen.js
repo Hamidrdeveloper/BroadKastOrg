@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { View, ScrollView, Text, Button, StyleSheet, SafeArea } from 'react-native';
@@ -11,10 +12,10 @@ import { AuthenticationContext } from '../../services/signup/sgnup.context';
 // import {Notifications} from 'react-native-notifications';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import emojiUtils from 'emoji-utils'
+import emojiUtils from 'emoji-utils';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import SlackMessage from './SlackMessage'
+import SlackMessage from './SlackMessage';
 import { renderInputToolbar } from './InputToolbar';
 import {
   renderAvatar,
@@ -35,7 +36,7 @@ import { Alert } from 'react-native';
 import { PermissionsAndroid } from 'react-native';
 import { Platform } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native';
-import { colors } from "../../infrastructure/theme/colors";
+import { colors } from '../../infrastructure/theme/colors';
 
 let options = {
   title: 'You can choose one image',
@@ -45,9 +46,9 @@ let options = {
   maxHeight: 300,
   quality: 0.9,
   storageOptions: {
-    skipBackup: true
-  }
-}
+    skipBackup: true,
+  },
+};
 var weekday = new Array(7);
 weekday[0] = 'Monday';
 weekday[1] = 'Tuesday';
@@ -75,11 +76,11 @@ let numberPollTime = -1;
 let numberPollLocation = -1;
 const ChatScreen = ({ navigation }) => {
   const [messages, setMessages] = useState([]);
-  const { SendMessageToGroup, messagesHub, messageHub, GetNewMessages, SendMessageToGroupImage, isConect } = useContext(HubConnection)
-  const { groupShowData } = useContext(GroupsContext)
-  const { locationPollResultUser,timePollResultUser,locPollResultData,timePollResultData } = useContext(EventsContext)
-  const { user } = useContext(AuthenticationContext)
-  const { fileUploadUser, fileChat, isSndFileChat } = useContext(FileUploadContext)
+  const { SendMessageToGroup, messagesHub, messageHub, GetNewMessages, SendMessageToGroupImage, isConect } = useContext(HubConnection);
+  const { groupShowData } = useContext(GroupsContext);
+  const { locationPollResultUser,timePollResultUser,locPollResultData,timePollResultData } = useContext(EventsContext);
+  const { user } = useContext(AuthenticationContext);
+  const { fileUploadUser, fileChat, isSndFileChat } = useContext(FileUploadContext);
   const [titleTimePollTime, setTitleTimePollTime] = useState('6:00 PM - 11:00 PM');
   const [titleDatePollTime, setTitleDatePollTime] = useState('Saturday\n Aug 29');
   const [titlePollLocation, setTitlePollLocation] = useState('McCarren- Park');
@@ -108,21 +109,21 @@ const ChatScreen = ({ navigation }) => {
         // }
         var me = {
 
-          text: "image",
+          text: 'image',
           createdAt: new Date(),
           user: {
             _id: user.id,
 
           },
-          image: host + "/" + fileChat
-        }
+          image: host + '/' + fileChat,
+        };
         var messaage = [];
         messaage.push(me);
 
         onSendImage(messaage);
       }
     }, 100);
-  }, [fileChat])
+  }, [fileChat]);
 
 
   useEffect(() => {
@@ -149,8 +150,8 @@ const ChatScreen = ({ navigation }) => {
                 _id: messageHub.userId,
                 name: 'React Native',
                 avatar: 'https://placeimg.com/140/140/any',
-              }
-            }
+              },
+            };
 
             var messaage = [];
             messaage.push(me);
@@ -166,8 +167,8 @@ const ChatScreen = ({ navigation }) => {
                 _id: messageHub.userId,
                 name: 'React Native',
                 avatar: 'https://placeimg.com/140/140/any',
-              }
-            }
+              },
+            };
 
             var messaage = [];
             messaage.push(me);
@@ -180,7 +181,7 @@ const ChatScreen = ({ navigation }) => {
       }
 
     }, 100);
-  }, [messageHub])
+  }, [messageHub]);
   useEffect(() => {
     setTimeout(() => {
       var arrayMessagesHub = [];
@@ -197,8 +198,8 @@ const ChatScreen = ({ navigation }) => {
                 _id: v.userId,
                 name: 'React Native',
                 avatar: 'https://placeimg.com/140/140/any',
-              }
-            }
+              },
+            };
 
             var messaage = [];
             messaage.push(me);
@@ -214,25 +215,25 @@ const ChatScreen = ({ navigation }) => {
                 _id: v.userId,
                 name: 'React Native',
                 avatar: 'https://scontent-frt3-2.cdninstagram.com/v/t51.2885-19/s150x150/232262869_545522559836490_7707377479797287867_n.jpg?_nc_ht=scontent-frt3-2.cdninstagram.com&_nc_ohc=pYmoPZ6EcWUAX-eR7XA&edm=ABfd0MgBAAAA&ccb=7-4&oh=082115f4c6067b7ac594f31aaf0a4cdc&oe=61159496&_nc_sid=7bff83',
-              }
-            }
+              },
+            };
             var messaage = [];
             messaage.push(me);
             setMessages((previousMessages) =>
               GiftedChat.append(previousMessages, messaage),
             );
           }
-        })
+        });
 
       }
     }, 100);
-  }, [messagesHub])
+  }, [messagesHub]);
 
   useEffect(()=>{
-    
+
     timePollResultData.forEach(element => {
       if (element.count > numberPollTime) {
-        numberPollTime = element.count
+        numberPollTime = element.count;
         let dateOrg = new Date(element.date);
         let date = new Date(element.startTime);
         var hours = date.getHours(); // gives the value in 24 hours format
@@ -241,7 +242,7 @@ const ChatScreen = ({ navigation }) => {
         hours = hours < 10 ? '0' + hours : hours;
         var minutes = date.getMinutes();
         var startTime = hours + ':' + minutes + ' ' + AmOrPm;
-      
+
         let dateEnd = new Date(element.count.endTime);
         var hours = dateEnd.getHours(); // gives the value in 24 hours format
         var AmOrPm = hours >= 12 ? 'PM' : 'AM';
@@ -249,24 +250,24 @@ const ChatScreen = ({ navigation }) => {
         hours = hours < 10 ? '0' + hours : hours;
         var minutes = dateEnd.getMinutes();
         var endTime = hours + ':' + minutes + ' ' + AmOrPm;
-        setTitleDatePollTime(weekday[dateOrg.getDay()]+'\n'+monthNames[dateOrg.getMonth()] + ' ' + dateOrg.getDate())
-        setTitleTimePollTime(startTime+'-'+dateEnd)
+        setTitleDatePollTime(weekday[dateOrg.getDay()] + '\n' + monthNames[dateOrg.getMonth()] + ' ' + dateOrg.getDate());
+        setTitleTimePollTime(startTime + '-' + dateEnd);
       }
-    })
+    });
   },[timePollResultData]);
   useEffect(()=>{
-    
+
     locPollResultData.forEach(element => {
       if (element.count > numberPollLocation) {
-        numberPollLocation=element.count;
+        numberPollLocation = element.count;
         setTitlePollLocation(`${element.name}`);
         setDisPollLocation(element.detail);
       }
-    })
-    
+    });
+
   },[locPollResultData]);
   const onSendImage = useCallback((messages = []) => {
-    SendMessageToGroupImage(messages)
+    SendMessageToGroupImage(messages);
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, messages),
     );
@@ -274,15 +275,15 @@ const ChatScreen = ({ navigation }) => {
   const onSend = useCallback((messages = []) => {
     console.log(messages);
     SendMessageToGroup(messages[0].text).then(res => {
-      if (res == "1") {
+      if (res == '1') {
         setMessages((previousMessages) =>
           GiftedChat.append(previousMessages, messages),
         );
       } else {
-        alert("Not Send Message")
+        alert('Not Send Message');
       }
 
-    })
+    });
 
   }, []);
 
@@ -333,15 +334,15 @@ const ChatScreen = ({ navigation }) => {
           marginRight: 0,
         }}
       />
-    )
+    );
 
-  }
+  };
   const renderMessage = (props) => {
     const {
       currentMessage: { text: currText },
-    } = props
+    } = props;
 
-    let messageTextStyle
+    let messageTextStyle;
 
     // Make "pure emoji" messages much bigger than plain text.
     if (currText && emojiUtils.isPureEmojiString(currText)) {
@@ -349,21 +350,21 @@ const ChatScreen = ({ navigation }) => {
         fontSize: 28,
         // Emoji get clipped if lineHeight isn't increased; make it consistent across platforms.
         lineHeight: Platform.OS === 'android' ? 34 : 30,
-      }
+      };
     }
 
-    return <Message {...props} messageTextStyle={messageTextStyle} />
-  }
+    return <Message {...props} messageTextStyle={messageTextStyle} />;
+  };
   const requestCameraPermission = async () => {
 
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA,
       {
         title: 'Hey you need to give us CAMERA permissions!',
-        message: 'We need to read your CAMERA so we can sell them to advertisers.'
+        message: 'We need to read your CAMERA so we can sell them to advertisers.',
       }
-    )
-    return granted === PermissionsAndroid.RESULTS.GRANTED
+    );
+    return granted === PermissionsAndroid.RESULTS.GRANTED;
 
   };
   const requestCameraPermissionCheck = async () => {
@@ -383,11 +384,11 @@ const ChatScreen = ({ navigation }) => {
             console.log('User tapped custom button: ', response.customButton);
           } else {
             let source = { uri: response.assets[0].uri };
-            console.log(response)
+            console.log(response);
             // ADD THIS
 
 
-            fileUploadUser(response.assets[0], "chat")
+            fileUploadUser(response.assets[0], 'chat');
 
 
           }
@@ -395,14 +396,14 @@ const ChatScreen = ({ navigation }) => {
 
       }
       else if (res === false) {
-        Alert("Please enable camera permission in device settings.")
+        Alert('Please enable camera permission in device settings.');
         requestCameraPermission();
 
       }
 
     }).catch(err => {
-      Alert("Please enable camera permission in device settings.")
-    })
+      Alert('Please enable camera permission in device settings.');
+    });
 
 
   };
@@ -440,11 +441,11 @@ const ChatScreen = ({ navigation }) => {
                 console.log('User tapped custom button: ', response.customButton);
               } else {
                 let source = { uri: response.assets[0].uri };
-                console.log(response)
+                console.log(response);
                 // ADD THIS
 
 
-                fileUploadUser(response.assets[0], "chat")
+                fileUploadUser(response.assets[0], 'chat');
 
 
               }
@@ -463,7 +464,7 @@ const ChatScreen = ({ navigation }) => {
                   console.log('User tapped custom button: ', response.customButton);
                 } else {
                   // let source = { uri: response.assets[0].uri};
-                  console.log(response)
+                  console.log(response);
                   // ADD THIS
 
 
@@ -486,12 +487,12 @@ const ChatScreen = ({ navigation }) => {
         optionTintColor="#7CE0DA"
       />
     );
-  }
+  };
   const scrollToBottomComponent = () => {
     return (
-      <FontAwesome name='angle-double-down' size={22} color='#333' />
+      <FontAwesome name="angle-double-down" size={22} color="#333" />
     );
-  }
+  };
   console.log(messages);
 
 
@@ -503,23 +504,23 @@ const ChatScreen = ({ navigation }) => {
         <BackScreen navigation={navigation} />
 
         {/* <TextCenterName style={{textAlign:'center',color:"#000"}}>{groupShowData.name}</TextCenterName> */}
-        <TextCenterName style={{ textAlign: 'center', color: "#000", fontSize: 14, }}>{isConect ? "Connect" : "Connecting..."}</TextCenterName>
+        <TextCenterName style={{ textAlign: 'center', color: '#000', fontSize: 14 }}>{isConect ? 'Connect' : 'Connecting...'}</TextCenterName>
         <TouchableOpacity
-          onPress={() => { navigation.push("GroupShowScreen") }}>
-          <TextCenterName>{"..."}</TextCenterName>
+          onPress={() => { navigation.push('GroupShowScreen'); }}>
+          <TextCenterName>{'...'}</TextCenterName>
         </TouchableOpacity>
 
       </ViewTopRowHeader>
-      
-      <View style={{ width: `100%`, flexDirection: 'row',backgroundColor:`${colors.text.blueLight}` ,height:100,alignItems:"center" }}>
-        <View  style={{height:`100%`,width:`50%`,justifyContent:'center'}}>
-          <Text  style={{color:"#000",fontSize:20,textAlign:'center'}}>{titleDatePollTime}</Text>
-          <Text style={{color:"#000",fontSize:13,textAlign:'center'} }>{titleTimePollTime}</Text>
+
+      <View style={{ width: '100%', flexDirection: 'row',backgroundColor:`${colors.text.blueLight}` ,height:100,alignItems:'center' }}>
+        <View  style={{height:'100%',width:'50%',justifyContent:'center'}}>
+          <Text  style={{color:'#000',fontSize:20,textAlign:'center'}}>{titleDatePollTime}</Text>
+          <Text style={{color:'#000',fontSize:13,textAlign:'center'} }>{titleTimePollTime}</Text>
         </View>
-        <View style={{ width: 1, height: `70%`, backgroundColor: `#000`, }} />
-        <View  style={{height:`100%`,width:`50%`,justifyContent:'center'}}>
-          <Text style={{color:"#000",fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
-          <Text style={{color:"#000",fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
+        <View style={{ width: 1, height: '70%', backgroundColor: '#000' }} />
+        <View  style={{height:'100%',width:'50%',justifyContent:'center'}}>
+          <Text style={{color:'#000',fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
+          <Text style={{color:'#000',fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
         </View>
       </View>
       <View
@@ -529,25 +530,25 @@ const ChatScreen = ({ navigation }) => {
           alignItems: 'center',
           justifyContent: 'center'
           , paddingBottom: 15,
-          backgroundColor:`${colors.text.blueLight}`
+          backgroundColor:`${colors.text.blueLight}`,
         }}>
      {
-          [{ "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
-          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},
-          { "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
-          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},
-          { "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
-          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},
-          { "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
-          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},
-          { "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
-          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},
-          { "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
-          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},
-          { "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
-          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},].map((person, index) => {
-            return (<View><ItemAvatar index={person} /></View>)
-          }) 
+          [{ 'id': '8',
+          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
+          { 'id': '7',
+          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
+          { 'id': '4',
+          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
+          { 'id': '5',
+          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
+          { 'id': '2',
+          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
+          { 'id': '0',
+          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
+          { 'id': '1',
+          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'}].forEach((person) => {
+            return <View><ItemAvatar index={person} /></View>;
+          })
 }
       </View>
       <GiftedChat
