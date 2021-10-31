@@ -536,8 +536,8 @@ const ChatScreen = ({ navigation }) => {
           { 'id': '0',
           'userId': '8f814c8c-e7c7-4a2a-8640-befd2252b3dd'},
           { 'id': '1',
-          'userId': '9840c9b5-2588-49ec-afd4-ed2a33f75fff'}].forEach((person) => {
-            return <View><ItemAvatar index={person} /></View>;
+          'userId': '9840c9b5-2588-49ec-afd4-ed2a33f75fff'}].forEach((person,index) => {
+            return <View><ItemAvatar person={person}index={index} /></View>;
           })
 }
         </View>
