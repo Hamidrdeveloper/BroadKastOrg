@@ -259,7 +259,8 @@ const ChatScreen = ({ navigation }) => {
     locPollResultData.forEach(element => {
       if (element.count > numberPollLocation) {
         numberPollLocation=element.count;
-        setTitlePollLocation(`${element.name},${element.detail},`)
+        setTitlePollLocation(`${element.name}`);
+        setDisPollLocation(element.detail);
       }
     })
     
@@ -520,6 +521,34 @@ const ChatScreen = ({ navigation }) => {
           <Text style={{color:"#000",fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
           <Text style={{color:"#000",fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
         </View>
+      </View>
+      <View
+        style={{
+          height: 50,
+          flexDirection: 'row-reverse',
+          alignItems: 'center',
+          justifyContent: 'center'
+          , paddingBottom: 15,
+          backgroundColor:`${colors.text.blueLight}`
+        }}>
+     {
+          [{ "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
+          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},
+          { "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
+          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},
+          { "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
+          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},
+          { "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
+          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},
+          { "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
+          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},
+          { "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
+          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},
+          { "id": "71e327aa-f60d-4c12-9124-08d995699a1f",
+          "userId": "5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a"},].map((person, index) => {
+            return (<View><ItemAvatar index={person} /></View>)
+          }) 
+}
       </View>
       <GiftedChat
         messages={messages}
