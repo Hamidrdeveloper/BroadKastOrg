@@ -521,7 +521,7 @@ const ChatScreen = ({ navigation }) => {
         <View  style={{height:'100%',width:'50%',justifyContent:'flex-start'}}>
           <Text style={{color:'#000',fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
           <Text style={{color:'#000',fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
-          <View style={{width:`100%`,height:30,backgroundColor:`#000`}}></View>
+          <View style={{width:`100%`,height:30,backgroundColor:`#000`,flexDirection:'row-reverse',}}></View>
           {
           [{ 'id': '8',
           'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
@@ -536,8 +536,8 @@ const ChatScreen = ({ navigation }) => {
           { 'id': '0',
           'userId': '8f814c8c-e7c7-4a2a-8640-befd2252b3dd'},
           { 'id': '1',
-          'userId': '9840c9b5-2588-49ec-afd4-ed2a33f75fff'}].forEach((person,index) => {
-            return <View><ItemAvatar person={person}index={index} /></View>;
+          'userId': '9840c9b5-2588-49ec-afd4-ed2a33f75fff'}].map((person,index) => {
+            return <View><ItemAvatar person={person} index={index} /></View>;
           })
 }
         </View>
