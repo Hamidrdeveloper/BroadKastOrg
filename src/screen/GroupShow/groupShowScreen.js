@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-undef */
 import React, {useContext, useEffect, useState} from 'react';
 import {
   ImagePro,
@@ -50,7 +52,7 @@ import {ItemCardPoll} from './component/itemCardPoll';
 import {FlatList} from 'react-native';
 import {GroupsContext} from '../../services/group/group.context';
 import {BackScreen} from '../../components/backScreen';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 let options = {
   title: 'You can choose one image',
@@ -99,11 +101,16 @@ export const GroupShowScreen = ({navigation}) => {
   const [isLocationPoll, setIsLocationPoll] = useState(false);
 
   const [isTimepoll, setIsTimepoll] = useState(false);
-  const {setTypeGestes,addGestesGu,setAddGestesGu} = useContext(FriendshipsContext)
+  const {setTypeGestes, addGestesGu, setAddGestesGu} =
+    useContext(FriendshipsContext);
 
   const [arryLocationPoll, setArryLocationPoll] = useState([]);
 
   useEffect(() => {
+    if (groupShowData.event != null) {
+      locationPollResultUser(groupShowData.event.id);
+      timePollResultUser(groupShowData.event.id);
+    }
     setTimeout(() => {
       setAddGestesGu(groupShowData.groupMembers);
       if (groupShowData.groupLocationPolls != null) {
@@ -173,129 +180,134 @@ export const GroupShowScreen = ({navigation}) => {
   }
   return (
     <>
-    <SafeAreaView>
-    <View style={{ backgroundColor:' rgba(78, 205, 196, 0.05 )',height:`100%`}}>
-      <ScrollView>
-        <ViewMain>
-          <ScrollViewCenter>
-            <ViewTopRowHeader>
-              <BackScreen navigation={navigation} />
+      <SafeAreaView>
+        <View
+          style={{
+            backgroundColor: ' rgba(78, 205, 196, 0.05 )',
+            height: '100%',
+          }}>
+          <ScrollView>
+            <ViewMain>
+              <ScrollViewCenter>
+                <ViewTopRowHeader>
+                  <BackScreen navigation={navigation} />
 
-              <TextCenterName>{groupShowData.name + loca}</TextCenterName>
+                  <TextCenterName>{groupShowData.name + loca}</TextCenterName>
 
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('GroupEditScreen');
-                }}>
-                <TextCenterName>{'Edit'}</TextCenterName>
-              </TouchableOpacity>
-            </ViewTopRowHeader>
+                  <TouchableOpacity
+                    onPress={() => {
+                      navigation.navigate('GroupEditScreen');
+                    }}>
+                    <TextCenterName>{'Edit'}</TextCenterName>
+                  </TouchableOpacity>
+                </ViewTopRowHeader>
 
-            <ImagePro source={Image_Http_URL} />
-            <View style={{marginTop: 15}} />
-            <LineView></LineView>
-            {groupShowData.event != null?
-            <>
-            <ViewShow>
-              <ViewCenterItemToRow>
-                <TitleSmallEventFieldAdd
-                  style={{paddingBottom: 0, textAlign: 'center'}}>
-                  {' '}
-                  {monthNames[date.getMonth()] + ' ' + date.getDate()}
-                </TitleSmallEventFieldAdd>
-                <TitleSmallEventFieldAdd
-                  style={{
-                    paddingTop: 0,
-                    textAlign: 'center',
-                  }}>{`${startTime}`}</TitleSmallEventFieldAdd>
-              </ViewCenterItemToRow>
-              <LineWidth />
-              <ViewCenterItemToRow>
-                <TitleSmallEventFieldAdd
-                  style={{paddingBottom: 0, textAlign: 'center'}}>
-                  {''}
-                </TitleSmallEventFieldAdd>
-                <TitleSmallEventFieldAdd
-                  style={{
-                    paddingTop: 0,
-                    textAlign: 'center',
-                  }}>{`${loca}`}</TitleSmallEventFieldAdd>
-              </ViewCenterItemToRow>
-            </ViewShow>
+                <ImagePro source={Image_Http_URL} />
+                <View style={{marginTop: 15}} />
+                <LineView />
+                {groupShowData.event != null ? (
+                  <>
+                    <ViewShow>
+                      <ViewCenterItemToRow>
+                        <TitleSmallEventFieldAdd
+                          style={{paddingBottom: 0, textAlign: 'center'}}>
+                          {' '}
+                          {monthNames[date.getMonth()] + ' ' + date.getDate()}
+                        </TitleSmallEventFieldAdd>
+                        <TitleSmallEventFieldAdd
+                          style={{
+                            paddingTop: 0,
+                            textAlign: 'center',
+                          }}>{`${startTime}`}</TitleSmallEventFieldAdd>
+                      </ViewCenterItemToRow>
+                      <LineWidth />
+                      <ViewCenterItemToRow>
+                        <TitleSmallEventFieldAdd
+                          style={{paddingBottom: 0, textAlign: 'center'}}>
+                          {''}
+                        </TitleSmallEventFieldAdd>
+                        <TitleSmallEventFieldAdd
+                          style={{
+                            paddingTop: 0,
+                            textAlign: 'center',
+                          }}>{`${loca}`}</TitleSmallEventFieldAdd>
+                      </ViewCenterItemToRow>
+                    </ViewShow>
 
-            <LineView></LineView>
-            </>
-          :null}
-            <View style={{height: 20}} />
+                    <LineView />
+                  </>
+                ) : null}
+                <View style={{height: 20}} />
 
-            <ViewRowEventAdd>
-              <TitleEventFieldAdd>Members</TitleEventFieldAdd>
-              <View
-                style={{
-                  flex: 1,
-                  height: 30,
-                  flexDirection: 'row-reverse',
-                  alignItems: 'center',
-                }}>
-                {addGestesGu != null
-                  ? addGestesGu.map((person, index) => {
-                      return (
-                        <View>
-                          <ItemAvatar person={person} index={index} />
-                        </View>
-                      );
-                    })
-                  : null}
-              </View>
+                <ViewRowEventAdd>
+                  <TitleEventFieldAdd>Members</TitleEventFieldAdd>
+                  <View
+                    style={{
+                      flex: 1,
+                      height: 30,
+                      flexDirection: 'row-reverse',
+                      alignItems: 'center',
+                    }}>
+                    {addGestesGu != null
+                      ? addGestesGu.map((person, index) => {
+                          return (
+                            <View>
+                              <ItemAvatar person={person} index={index} />
+                            </View>
+                          );
+                        })
+                      : null}
+                  </View>
 
-              <TouchableOpacity
-                style={{alignSelf: 'center'}}
-                onPress={() => {
-                  setTypeGestes('groupAdd');
-                  navigation.navigate('InvateScreen');
-                }}>
-                <ViewBackIcon>
-                  <Icon name="plus" size={15} color="#000" />
-                </ViewBackIcon>
-              </TouchableOpacity>
-            </ViewRowEventAdd>
-            <LineView></LineView>
+                  <TouchableOpacity
+                    style={{alignSelf: 'center'}}
+                    onPress={() => {
+                      setTypeGestes('groupAdd');
+                      navigation.navigate('InvateScreen');
+                    }}>
+                    <ViewBackIcon>
+                      <Icon name="plus" size={15} color="#000" />
+                    </ViewBackIcon>
+                  </TouchableOpacity>
+                </ViewRowEventAdd>
+                <LineView />
 
+                <ViewShow>
+                  <TitleSmallEventFieldAdd style={{paddingLeft: 70}}>
+                    {groupShowData.description}
+                  </TitleSmallEventFieldAdd>
+                  <TitleEventFieldAdd
+                    style={{position: 'absolute', left: 0, bottom: 0}}>
+                    NOTES
+                  </TitleEventFieldAdd>
+                </ViewShow>
+                <LineView />
 
-            <ViewShow>
-              <TitleSmallEventFieldAdd style={{paddingLeft: 70}}>
-                {groupShowData.description}
-              </TitleSmallEventFieldAdd>
-              <TitleEventFieldAdd
-                style={{position: 'absolute', left: 0, bottom: 0}}>
-                NOTES
-              </TitleEventFieldAdd>
-            </ViewShow>
-            <LineView></LineView>
-
-            <ViewRowButtonSugg>
-              {/* <TouchableOpacity>
+                <ViewRowButtonSugg>
+                  {/* <TouchableOpacity>
                 <ButtonSugg>
                   <TitleButton>{'Decline'}</TitleButton>
                 </ButtonSugg>
               </TouchableOpacity> */}
-              <View style={{marginTop: 15}} />
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('ChatScreen');
-                }}>
-                <ButtonSugg
-                  style={{backgroundColor: 'rgba(78, 205, 196, 0.1 )'}}
-                  styleDisabled={{color: 'red'}}
-                  title="Submit">
-                  <TitleButton style={{padding: 0}}>{'Go to chat'}</TitleButton>
-                </ButtonSugg>
-              </TouchableOpacity>
-            </ViewRowButtonSugg>
-          </ScrollViewCenter>
-        </ViewMain>
-      </ScrollView>
-      </View>
+                  <View style={{marginTop: 15}} />
+                  <TouchableOpacity
+                    onPress={() => {
+                      navigation.navigate('ChatScreen');
+                    }}>
+                    <ButtonSugg
+                      style={{backgroundColor: 'rgba(78, 205, 196, 0.1 )'}}
+                      styleDisabled={{color: 'red'}}
+                      title="Submit">
+                      <TitleButton style={{padding: 0}}>
+                        {'Go to chat'}
+                      </TitleButton>
+                    </ButtonSugg>
+                  </TouchableOpacity>
+                </ViewRowButtonSugg>
+              </ScrollViewCenter>
+            </ViewMain>
+          </ScrollView>
+        </View>
       </SafeAreaView>
     </>
   );
