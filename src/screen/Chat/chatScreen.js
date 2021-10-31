@@ -521,6 +521,7 @@ const ChatScreen = ({ navigation }) => {
         <View  style={{height:'100%',width:'50%',justifyContent:'center'}}>
           <Text style={{color:'#000',fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
           <Text style={{color:'#000',fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
+          <View style={{width:`100%`,height:30}}></View>
           {
           [{ 'id': '8',
           'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
