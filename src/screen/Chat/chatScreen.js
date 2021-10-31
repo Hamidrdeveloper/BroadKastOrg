@@ -521,7 +521,7 @@ const ChatScreen = ({ navigation }) => {
         <View  style={{height:'100%',width:'50%',justifyContent:'center'}}>
           <Text style={{color:'#000',fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
           <Text style={{color:'#000',fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
-          <View style={{width:`100%`,height:30}}></View>
+          <View style={{width:`100%`,height:30,backgroundColor:`${colors.brand.blueLight}`}}></View>
           {
           [{ 'id': '8',
           'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
@@ -530,13 +530,13 @@ const ChatScreen = ({ navigation }) => {
           { 'id': '4',
           'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
           { 'id': '5',
-          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
+          'userId': 'b2aa478b-302e-487b-9937-2672a346a155'},
           { 'id': '2',
           'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
           { 'id': '0',
-          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
+          'userId': '8f814c8c-e7c7-4a2a-8640-befd2252b3dd'},
           { 'id': '1',
-          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'}].forEach((person) => {
+          'userId': '9840c9b5-2588-49ec-afd4-ed2a33f75fff'}].forEach((person) => {
             return <View><ItemAvatar index={person} /></View>;
           })
 }
