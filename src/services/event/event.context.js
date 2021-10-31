@@ -488,7 +488,7 @@ export const EventsContextProvider= ({children}) =>{
 
     locationPollResult(id)
       .then(results => {
-        console.log(results.data)
+        console.log("==================================>",results.data)
         if(results==401){
           logOut()
         }else{
@@ -512,7 +512,7 @@ export const EventsContextProvider= ({children}) =>{
 
     timePollResult(id)
       .then(results => {
-        console.log(results.data)
+        console.log("==================================>",results.data)
         if(results==401){
           logOut()
         }else{

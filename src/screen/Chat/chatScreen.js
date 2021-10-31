@@ -524,7 +524,6 @@ if(groupShowData.event!=null){
           <Text style={{color:"#000",fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
         </View>
       </View>
-      
       <GiftedChat
         messages={messages}
         onSend={(messages) => onSend(messages)}
