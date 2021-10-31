@@ -305,7 +305,7 @@ export const timePollAnswer = (id) => {
 
     var config = {
         method: 'post',
-        url:`${host}/api/v1/Event/LocationPollAnswer?id=${id}`,
+        url:`https://bugle.eeda.i/api/v1/Event/LocationPollAnswer?id=${id}`,
         headers: {
             'Authorization': `Bearer ${TOKEN.data}`,
             'Content-Type': 'application/json'
@@ -359,7 +359,7 @@ export const timePollResult = (id) => {
 
     var config = {
         method: 'get',
-        url: `${host}​/api/v1/Event/TimePollResult?eventId=${id}`,
+        url: `http://bugle.eeda.i​/api/v1/Event/TimePollResult?eventId=${id}`,
         headers: {
             'Authorization': `Bearer ${TOKEN.data}`,
             'Content-Type': 'application/json'
@@ -387,7 +387,7 @@ export const locationPollResult = (id) => {
 
     var config = {
         method: 'get',
-        url: host + `​/api/v1/Event/LocationPollResult?eventId=${id}`,
+        url: 'http://bugle.eeda.ir' + `​/api/v1/Event/LocationPollResult?eventId=${id}`,
         headers: {
             'Authorization': `Bearer ${TOKEN.data}`,
             'Content-Type': 'application/json'

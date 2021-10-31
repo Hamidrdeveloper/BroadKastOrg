@@ -1,7 +1,7 @@
 import { Platform } from "react-native";
 
 const liveHost = "https://bugle.eeda.ir";
-const localHost = "http://bugle.eeda.ir";
+const localHost = "https://bugle.eeda.ir";
 
 
 export const ImageLoad = "https://bugle.eeda.ir/f/Profiles/";
