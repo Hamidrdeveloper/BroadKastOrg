@@ -512,7 +512,7 @@ const ChatScreen = ({ navigation }) => {
 
       </ViewTopRowHeader>
 
-      <View style={{ width: '100%', flexDirection: 'row',backgroundColor:`${colors.text.blueLight}` ,height:100,alignItems:'center' }}>
+      <View style={{ width: '100%', flexDirection: 'row',backgroundColor:`${colors.brand.blueLight}` ,height:100,alignItems:'center' }}>
         <View  style={{height:'100%',width:'50%',justifyContent:'center'}}>
           <Text  style={{color:'#000',fontSize:20,textAlign:'center'}}>{titleDatePollTime}</Text>
           <Text style={{color:'#000',fontSize:13,textAlign:'center'} }>{titleTimePollTime}</Text>
@@ -521,18 +521,7 @@ const ChatScreen = ({ navigation }) => {
         <View  style={{height:'100%',width:'50%',justifyContent:'center'}}>
           <Text style={{color:'#000',fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
           <Text style={{color:'#000',fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
-        </View>
-      </View>
-      <View
-        style={{
-          height: 50,
-          flexDirection: 'row-reverse',
-          alignItems: 'center',
-          justifyContent: 'center'
-          , paddingBottom: 15,
-          backgroundColor:`${colors.text.blueLight}`,
-        }}>
-     {
+          {
           [{ 'id': '8',
           'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
           { 'id': '7',
@@ -550,6 +539,7 @@ const ChatScreen = ({ navigation }) => {
             return <View><ItemAvatar index={person} /></View>;
           })
 }
+        </View>
       </View>
       <GiftedChat
         messages={messages}
