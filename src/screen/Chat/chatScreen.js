@@ -257,8 +257,8 @@ const ChatScreen = ({ navigation }) => {
   useEffect(()=>{
     
     locPollResultData.forEach(element => {
-      if (element.count > numberPollTime) {
-        numberPollLocation = element.count
+      if (element.count > numberPollLocation) {
+        numberPollLocation=element.count;
         setTitlePollLocation(`${element.text},${element.place_name},`)
       }
     })
