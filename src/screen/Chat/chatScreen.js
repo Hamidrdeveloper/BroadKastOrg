@@ -259,7 +259,7 @@ const ChatScreen = ({ navigation }) => {
     locPollResultData.forEach(element => {
       if (element.count > numberPollLocation) {
         numberPollLocation=element.count;
-        setTitlePollLocation(`${element.text},${element.place_name},`)
+        setTitlePollLocation(`${element.name},${element.detail},`)
       }
     })
     
