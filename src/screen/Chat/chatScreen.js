@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { View, ScrollView, Text, Button, StyleSheet, SafeArea } from 'react-native';
 import { Actions, Bubble, GiftedChat, Message, MessageImage, MessageText, Send } from '../../components/giftedChat/src/index';
@@ -241,7 +242,7 @@ const ChatScreen = ({ navigation }) => {
         var minutes = date.getMinutes();
         var startTime = hours + ':' + minutes + ' ' + AmOrPm;
       
-        let dateEnd = new Date(count.endTime);
+        let dateEnd = new Date(element.count.endTime);
         var hours = dateEnd.getHours(); // gives the value in 24 hours format
         var AmOrPm = hours >= 12 ? 'PM' : 'AM';
         hours = hours % 12 || 12;
