@@ -488,13 +488,13 @@ export const EventsContextProvider= ({children}) =>{
 
     locationPollResult(id)
       .then(results => {
-
+        console.log(results.data)
         if(results==401){
           logOut()
         }else{
         if (results != '') {
 
-          console.log(results.data)
+    
 
           setLocPollResultData(results.data)
         } else {
@@ -512,13 +512,13 @@ export const EventsContextProvider= ({children}) =>{
 
     timePollResult(id)
       .then(results => {
-
+        console.log(results.data)
         if(results==401){
           logOut()
         }else{
         if (results != '') {
 
-          console.log(results.data)
+       
 
           setTimePollResultData(results.data)
         } else {

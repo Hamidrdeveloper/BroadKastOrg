@@ -1,20 +1,35 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { View, ScrollView, Text, Button, StyleSheet, SafeArea } from 'react-native';
-import { Actions, Bubble, GiftedChat, Message, MessageImage, MessageText, Send } from '../../components/giftedChat/src/index';
+import React, {useState, useEffect, useCallback, useContext} from 'react';
+import {
+  View,
+  ScrollView,
+  Text,
+  Button,
+  StyleSheet,
+  SafeArea,
+} from 'react-native';
+import {
+  Actions,
+  Bubble,
+  GiftedChat,
+  Message,
+  MessageImage,
+  MessageText,
+  Send,
+} from '../../components/giftedChat/src/index';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { HubConnection } from '../../services/hubConnection/hubConnection.context';
-import { GroupsContext } from '../../services/group/group.context';
-import { EventsContext } from '../../services/event/event.context';
-import { AuthenticationContext } from '../../services/signup/sgnup.context';
+import {HubConnection} from '../../services/hubConnection/hubConnection.context';
+import {GroupsContext} from '../../services/group/group.context';
+import {EventsContext} from '../../services/event/event.context';
+import {AuthenticationContext} from '../../services/signup/sgnup.context';
 // import {Notifications} from 'react-native-notifications';
-import { TouchableOpacity } from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import emojiUtils from 'emoji-utils'
-import { SafeAreaView } from 'react-native-safe-area-context';
+import emojiUtils from 'emoji-utils';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
-import SlackMessage from './SlackMessage'
-import { renderInputToolbar } from './InputToolbar';
+import SlackMessage from './SlackMessage';
+import {renderInputToolbar} from './InputToolbar';
 import {
   renderAvatar,
   renderBubble,
@@ -23,18 +38,21 @@ import {
   renderMessageText,
   renderCustomView,
 } from './MessageContainer';
-import { Image } from 'react-native';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-import { FileUploadContext } from '../../services/fileUpload/fileUpload.context';
-import { host } from '../../utils/env';
-import { TextCenterName, ViewTopRowHeader } from '../EventShow/eventShowScreen.styles';
-import { ItemAvatar } from '../../components/itemAvatar';
-import { BackScreen } from '../../components/backScreen';
-import { Alert } from 'react-native';
-import { PermissionsAndroid } from 'react-native';
-import { Platform } from 'react-native';
-import { KeyboardAvoidingView } from 'react-native';
-import { colors } from "../../infrastructure/theme/colors";
+import {Image} from 'react-native';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {FileUploadContext} from '../../services/fileUpload/fileUpload.context';
+import {host} from '../../utils/env';
+import {
+  TextCenterName,
+  ViewTopRowHeader,
+} from '../EventShow/eventShowScreen.styles';
+import {ItemAvatar} from '../../components/itemAvatar';
+import {BackScreen} from '../../components/backScreen';
+import {Alert} from 'react-native';
+import {PermissionsAndroid} from 'react-native';
+import {Platform} from 'react-native';
+import {KeyboardAvoidingView} from 'react-native';
+import {colors} from '../../infrastructure/theme/colors';
 
 let options = {
   title: 'You can choose one image',
@@ -44,9 +62,9 @@ let options = {
   maxHeight: 300,
   quality: 0.9,
   storageOptions: {
-    skipBackup: true
-  }
-}
+    skipBackup: true,
+  },
+};
 var weekday = new Array(7);
 weekday[0] = 'Monday';
 weekday[1] = 'Tuesday';
@@ -72,65 +90,66 @@ var monthNames = [
 ];
 let numberPollTime = -1;
 let numberPollLocation = -1;
-const ChatScreen = ({ navigation }) => {
+const ChatScreen = ({navigation}) => {
   const [messages, setMessages] = useState([]);
-  const { SendMessageToGroup, messagesHub, messageHub, GetNewMessages, SendMessageToGroupImage, isConect } = useContext(HubConnection)
-  const { groupShowData } = useContext(GroupsContext)
-  const { locationPollResultUser,timePollResultUser,locPollResultData,timePollResultData } = useContext(EventsContext)
-  const { user } = useContext(AuthenticationContext)
-  const { fileUploadUser, fileChat, isSndFileChat } = useContext(FileUploadContext)
-  const [titleTimePollTime, setTitleTimePollTime] = useState('6:00 PM - 11:00 PM');
-  const [titleDatePollTime, setTitleDatePollTime] = useState('Saturday\n Aug 29');
+  const {
+    SendMessageToGroup,
+    messagesHub,
+    messageHub,
+    GetNewMessages,
+    SendMessageToGroupImage,
+    isConect,
+  } = useContext(HubConnection);
+  const {groupShowData} = useContext(GroupsContext);
+  const {
+    locationPollResultUser,
+    timePollResultUser,
+    locPollResultData,
+    timePollResultData,
+  } = useContext(EventsContext);
+  const {user} = useContext(AuthenticationContext);
+  const {fileUploadUser, fileChat, isSndFileChat} =
+    useContext(FileUploadContext);
+  const [titleTimePollTime, setTitleTimePollTime] =
+    useState('6:00 PM - 11:00 PM');
+  const [titleDatePollTime, setTitleDatePollTime] =
+    useState('Saturday\n Aug 29');
   const [titlePollLocation, setTitlePollLocation] = useState('McCarren- Park');
-  const [disPollLocation, setDisPollLocation] = useState('776 Lorimer St.Brookiyn, Ny 112222');
+  const [disPollLocation, setDisPollLocation] = useState(
+    '776 Lorimer St.Brookiyn, Ny 112222',
+  );
   useEffect(() => {
     setMessages([]);
     setTimeout(() => {
-
-if(groupShowData.event!=null){
-  locationPollResultUser(groupShowData.event.id)
-  timePollResultUser(groupShowData.event.id)
-
-}
+      if (groupShowData.event != null) {
+        locationPollResultUser(groupShowData.event.id);
+        timePollResultUser(groupShowData.event.id);
+      }
       GetNewMessages(groupShowData);
     }, 100);
   }, []);
   useEffect(() => {
     setTimeout(() => {
-
-
-
       if (fileChat != null) {
-        // {
-        //   "text": "bo",
-        //   "user": {
-        //       "_id": "3269126d-f31c-4a96-8f0a-671c0d45b3af"
-        //   },
-        //   "createdAt": "2021-08-08T11:17:47.861Z",
-        //   "_id": "542f1be4-7160-4e81-b77d-ca625d361885"
-        // }
+       
         var me = {
-
-          text: "image",
+          text: 'image',
           createdAt: new Date(),
           user: {
             _id: user.id,
-
           },
-          image: host + "/" + fileChat
-        }
+          image: host + '/' + fileChat,
+        };
         var messaage = [];
         messaage.push(me);
 
         onSendImage(messaage);
       }
     }, 100);
-  }, [fileChat])
-
+  }, [fileChat]);
 
   useEffect(() => {
     setTimeout(() => {
-
       if (messageHub != null) {
         //   let localNotification = Notifications.postLocalNotification({
         //     body: groupShowData.name,
@@ -152,12 +171,12 @@ if(groupShowData.event!=null){
                 _id: messageHub.userId,
                 name: 'React Native',
                 avatar: 'https://placeimg.com/140/140/any',
-              }
-            }
+              },
+            };
 
             var messaage = [];
             messaage.push(me);
-            setMessages((previousMessages) =>
+            setMessages(previousMessages =>
               GiftedChat.append(previousMessages, messaage),
             );
           } else {
@@ -169,21 +188,19 @@ if(groupShowData.event!=null){
                 _id: messageHub.userId,
                 name: 'React Native',
                 avatar: 'https://placeimg.com/140/140/any',
-              }
-            }
+              },
+            };
 
             var messaage = [];
             messaage.push(me);
-            setMessages((previousMessages) =>
+            setMessages(previousMessages =>
               GiftedChat.append(previousMessages, messaage),
             );
           }
-
         }
       }
-
     }, 100);
-  }, [messageHub])
+  }, [messageHub]);
   useEffect(() => {
     setTimeout(() => {
       var arrayMessagesHub = [];
@@ -200,12 +217,12 @@ if(groupShowData.event!=null){
                 _id: v.userId,
                 name: 'React Native',
                 avatar: 'https://placeimg.com/140/140/any',
-              }
-            }
+              },
+            };
 
             var messaage = [];
             messaage.push(me);
-            setMessages((previousMessages) =>
+            setMessages(previousMessages =>
               GiftedChat.append(previousMessages, messaage),
             );
           } else {
@@ -216,26 +233,25 @@ if(groupShowData.event!=null){
               user: {
                 _id: v.userId,
                 name: 'React Native',
-                avatar: 'https://scontent-frt3-2.cdninstagram.com/v/t51.2885-19/s150x150/232262869_545522559836490_7707377479797287867_n.jpg?_nc_ht=scontent-frt3-2.cdninstagram.com&_nc_ohc=pYmoPZ6EcWUAX-eR7XA&edm=ABfd0MgBAAAA&ccb=7-4&oh=082115f4c6067b7ac594f31aaf0a4cdc&oe=61159496&_nc_sid=7bff83',
-              }
-            }
+                avatar:
+                  'https://scontent-frt3-2.cdninstagram.com/v/t51.2885-19/s150x150/232262869_545522559836490_7707377479797287867_n.jpg?_nc_ht=scontent-frt3-2.cdninstagram.com&_nc_ohc=pYmoPZ6EcWUAX-eR7XA&edm=ABfd0MgBAAAA&ccb=7-4&oh=082115f4c6067b7ac594f31aaf0a4cdc&oe=61159496&_nc_sid=7bff83',
+              },
+            };
             var messaage = [];
             messaage.push(me);
-            setMessages((previousMessages) =>
+            setMessages(previousMessages =>
               GiftedChat.append(previousMessages, messaage),
             );
           }
-        })
-
+        });
       }
     }, 100);
-  }, [messagesHub])
+  }, [messagesHub]);
 
-  useEffect(()=>{
-    
+  useEffect(() => {
     timePollResultData.forEach(element => {
       if (element.count > numberPollTime) {
-        numberPollTime = element.count
+        numberPollTime = element.count;
         let dateOrg = new Date(element.date);
         let date = new Date(element.startTime);
         var hours = date.getHours(); // gives the value in 24 hours format
@@ -244,7 +260,7 @@ if(groupShowData.event!=null){
         hours = hours < 10 ? '0' + hours : hours;
         var minutes = date.getMinutes();
         var startTime = hours + ':' + minutes + ' ' + AmOrPm;
-      
+
         let dateEnd = new Date(count.endTime);
         var hours = dateEnd.getHours(); // gives the value in 24 hours format
         var AmOrPm = hours >= 12 ? 'PM' : 'AM';
@@ -252,60 +268,61 @@ if(groupShowData.event!=null){
         hours = hours < 10 ? '0' + hours : hours;
         var minutes = dateEnd.getMinutes();
         var endTime = hours + ':' + minutes + ' ' + AmOrPm;
-        setTitleDatePollTime(weekday[dateOrg.getDay()]+'\n'+monthNames[dateOrg.getMonth()] + ' ' + dateOrg.getDate())
-        setTitleTimePollTime(startTime+'-'+dateEnd)
+        setTitleDatePollTime(
+          weekday[dateOrg.getDay()] +
+            '\n' +
+            monthNames[dateOrg.getMonth()] +
+            ' ' +
+            dateOrg.getDate(),
+        );
+        setTitleTimePollTime(startTime + '-' + dateEnd);
       }
-    })
-  },[timePollResultData]);
-  useEffect(()=>{
-    
+    });
+  }, [timePollResultData]);
+  useEffect(() => {
     locPollResultData.forEach(element => {
       if (element.count > numberPollTime) {
-        numberPollLocation = element.count
-        setTitlePollLocation(`${element.text},${element.place_name},`)
+        numberPollLocation = element.count;
+        setTitlePollLocation(`${element.text},${element.place_name},`);
       }
-    })
-    
-  },[locPollResultData]);
+    });
+  }, [locPollResultData]);
   const onSendImage = useCallback((messages = []) => {
-    SendMessageToGroupImage(messages)
-    setMessages((previousMessages) =>
+    SendMessageToGroupImage(messages);
+    setMessages(previousMessages =>
       GiftedChat.append(previousMessages, messages),
     );
   }, []);
   const onSend = useCallback((messages = []) => {
     console.log(messages);
     SendMessageToGroup(messages[0].text).then(res => {
-      if (res == "1") {
-        setMessages((previousMessages) =>
+      if (res == '1') {
+        setMessages(previousMessages =>
           GiftedChat.append(previousMessages, messages),
         );
       } else {
-        alert("Not Send Message")
+        alert('Not Send Message');
       }
-
-    })
-
+    });
   }, []);
 
-  const renderSend = (props) => {
+  const renderSend = props => {
     return (
       <Send {...props}>
-        <View style={{ flexDirection: 'row-reverse', alignItems: 'center' }}>
+        <View style={{flexDirection: 'row-reverse', alignItems: 'center'}}>
           <MaterialCommunityIcons
             name="send-circle"
-            style={{ marginBottom: 5, marginRight: 5 }}
+            style={{marginBottom: 5, marginRight: 5}}
             size={32}
             color="#7CE0DA"
           />
-          <View style={{ width: 15 }} />
-
+          <View style={{width: 15}} />
         </View>
       </Send>
     );
   };
 
-  const renderBubble = (props) => {
+  const renderBubble = props => {
     return (
       <Bubble
         {...props}
@@ -322,9 +339,8 @@ if(groupShowData.event!=null){
       />
     );
   };
-  const renderMessageImage = (props) => {
-
-    const { containerStyle, wrapperStyle, ...messageImageProps } = props;
+  const renderMessageImage = props => {
+    const {containerStyle, wrapperStyle, ...messageImageProps} = props;
 
     return (
       <MessageImage
@@ -335,15 +351,14 @@ if(groupShowData.event!=null){
           marginRight: 0,
         }}
       />
-    )
-
-  }
-  const renderMessage = (props) => {
+    );
+  };
+  const renderMessage = props => {
     const {
-      currentMessage: { text: currText },
-    } = props
+      currentMessage: {text: currText},
+    } = props;
 
-    let messageTextStyle
+    let messageTextStyle;
 
     // Make "pure emoji" messages much bigger than plain text.
     if (currText && emojiUtils.isPureEmojiString(currText)) {
@@ -351,69 +366,56 @@ if(groupShowData.event!=null){
         fontSize: 28,
         // Emoji get clipped if lineHeight isn't increased; make it consistent across platforms.
         lineHeight: Platform.OS === 'android' ? 34 : 30,
-      }
+      };
     }
 
-    return <Message {...props} messageTextStyle={messageTextStyle} />
-  }
+    return <Message {...props} messageTextStyle={messageTextStyle} />;
+  };
   const requestCameraPermission = async () => {
-
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA,
       {
         title: 'Hey you need to give us CAMERA permissions!',
-        message: 'We need to read your CAMERA so we can sell them to advertisers.'
-      }
-    )
-    return granted === PermissionsAndroid.RESULTS.GRANTED
-
+        message:
+          'We need to read your CAMERA so we can sell them to advertisers.',
+      },
+    );
+    return granted === PermissionsAndroid.RESULTS.GRANTED;
   };
   const requestCameraPermissionCheck = async () => {
-
     const granted = await PermissionsAndroid.check(
-      PermissionsAndroid.PERMISSIONS.CAMERA
-    ).then(res => {
-      if (res === true) {
-        //Open scanner
-        launchCamera(options, response => {
-          if (response.didCancel) {
-            console.log('User cancelled photo picker');
-            Alert.alert('You did not select any image');
-          } else if (response.error) {
-            console.log('ImagePicker Error: ', response.error);
-          } else if (response.customButton) {
-            console.log('User tapped custom button: ', response.customButton);
-          } else {
-            let source = { uri: response.assets[0].uri };
-            console.log(response)
-            // ADD THIS
+      PermissionsAndroid.PERMISSIONS.CAMERA,
+    )
+      .then(res => {
+        if (res === true) {
+          //Open scanner
+          launchCamera(options, response => {
+            if (response.didCancel) {
+              console.log('User cancelled photo picker');
+              Alert.alert('You did not select any image');
+            } else if (response.error) {
+              console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+              console.log('User tapped custom button: ', response.customButton);
+            } else {
+              let source = {uri: response.assets[0].uri};
+              console.log(response);
+              // ADD THIS
 
-
-            fileUploadUser(response.assets[0], "chat")
-
-
-          }
-        });
-
-      }
-      else if (res === false) {
-        Alert("Please enable camera permission in device settings.")
-        requestCameraPermission();
-
-      }
-
-    }).catch(err => {
-      Alert("Please enable camera permission in device settings.")
-    })
-
-
+              fileUploadUser(response.assets[0], 'chat');
+            }
+          });
+        } else if (res === false) {
+          Alert('Please enable camera permission in device settings.');
+          requestCameraPermission();
+        }
+      })
+      .catch(err => {
+        Alert('Please enable camera permission in device settings.');
+      });
   };
-  const renderActions = (props) => {
-
-
-
+  const renderActions = props => {
     return (
-
       <Actions
         {...props}
         containerStyle={{
@@ -425,12 +427,8 @@ if(groupShowData.event!=null){
           marginRight: 4,
           marginBottom: 0,
         }}
-        icon={() => (
-          <Icon name="upload" size={20} />
-        )}
+        icon={() => <Icon name="upload" size={20} />}
         options={{
-
-
           'Choose From Library': () => {
             launchImageLibrary(options, response => {
               if (response.didCancel) {
@@ -439,19 +437,18 @@ if(groupShowData.event!=null){
               } else if (response.error) {
                 console.log('ImagePicker Error: ', response.error);
               } else if (response.customButton) {
-                console.log('User tapped custom button: ', response.customButton);
+                console.log(
+                  'User tapped custom button: ',
+                  response.customButton,
+                );
               } else {
-                let source = { uri: response.assets[0].uri };
-                console.log(response)
+                let source = {uri: response.assets[0].uri};
+                console.log(response);
                 // ADD THIS
 
-
-                fileUploadUser(response.assets[0], "chat")
-
-
+                fileUploadUser(response.assets[0], 'chat');
               }
             });
-
           },
           'Choose From Camera': () => {
             if (Platform.OS === 'ios') {
@@ -462,24 +459,21 @@ if(groupShowData.event!=null){
                 } else if (response.error) {
                   console.log('ImagePicker Error: ', response.error);
                 } else if (response.customButton) {
-                  console.log('User tapped custom button: ', response.customButton);
+                  console.log(
+                    'User tapped custom button: ',
+                    response.customButton,
+                  );
                 } else {
                   // let source = { uri: response.assets[0].uri};
-                  console.log(response)
+                  console.log(response);
                   // ADD THIS
 
-
                   // fileUploadUser(response.assets[0],"chat")
-
-
                 }
               });
             }
             requestCameraPermission();
             requestCameraPermissionCheck();
-
-
-
           },
           Cancel: () => {
             console.log('Cancel');
@@ -488,40 +482,54 @@ if(groupShowData.event!=null){
         optionTintColor="#7CE0DA"
       />
     );
-  }
+  };
   const scrollToBottomComponent = () => {
-    return (
-      <FontAwesome name='angle-double-down' size={22} color='#333' />
-    );
-  }
+    return <FontAwesome name="angle-double-down" size={22} color="#333" />;
+  };
   console.log(messages);
-
-
-
 
   return (
     <>
-      <ViewTopRowHeader style={{ backgroundColor: '#eee', marginTop: 25 }}>
+      <ViewTopRowHeader style={{backgroundColor: '#eee', marginTop: 25}}>
         <BackScreen navigation={navigation} />
 
         {/* <TextCenterName style={{textAlign:'center',color:"#000"}}>{groupShowData.name}</TextCenterName> */}
-        <TextCenterName style={{ textAlign: 'center', color: "#000", fontSize: 14, }}>{isConect ? "Connect" : "Connecting..."}</TextCenterName>
+        <TextCenterName
+          style={{textAlign: 'center', color: '#000', fontSize: 14}}>
+          {isConect ? 'Connect' : 'Connecting...'}
+        </TextCenterName>
         <TouchableOpacity
-          onPress={() => { navigation.push("GroupShowScreen") }}>
-          <TextCenterName>{"..."}</TextCenterName>
+          onPress={() => {
+            navigation.push('GroupShowScreen');
+          }}>
+          <TextCenterName>{'...'}</TextCenterName>
         </TouchableOpacity>
-
       </ViewTopRowHeader>
-      
-      <View style={{ width: `100%`, flexDirection: 'row',backgroundColor:`${colors.text.blueLight}` ,height:100,alignItems:"center" }}>
-        <View  style={{height:`100%`,width:`50%`,justifyContent:'center'}}>
-          <Text  style={{color:"#000",fontSize:20,textAlign:'center'}}>{titleDatePollTime}</Text>
-          <Text style={{color:"#000",fontSize:13,textAlign:'center'} }>{titleTimePollTime}</Text>
+
+      <View
+        style={{
+          width: `100%`,
+          flexDirection: 'row',
+          backgroundColor: `${colors.text.blueLight}`,
+          height: 100,
+          alignItems: 'center',
+        }}>
+        <View style={{height: `100%`, width: `50%`, justifyContent: 'center'}}>
+          <Text style={{color: '#000', fontSize: 20, textAlign: 'center'}}>
+            {titleDatePollTime}
+          </Text>
+          <Text style={{color: '#000', fontSize: 13, textAlign: 'center'}}>
+            {titleTimePollTime}
+          </Text>
         </View>
-        <View style={{ width: 1, height: `70%`, backgroundColor: `#000`, }} />
-        <View  style={{height:`100%`,width:`50%`,justifyContent:'center'}}>
-          <Text style={{color:"#000",fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
-          <Text style={{color:"#000",fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
+        <View style={{width: 1, height: `70%`, backgroundColor: `#000`}} />
+        <View style={{height: `100%`, width: `50%`, justifyContent: 'center'}}>
+          <Text style={{color: '#000', fontSize: 20, textAlign: 'center'}}>
+            {titlePollLocation}
+          </Text>
+          <Text style={{color: '#000', fontSize: 13, textAlign: 'center'}}>
+            {disPollLocation}
+          </Text>
         </View>
       </View>
       <View
@@ -529,23 +537,26 @@ if(groupShowData.event!=null){
           height: 50,
           flexDirection: 'row-reverse',
           alignItems: 'center',
-          justifyContent: 'center'
-          , paddingBottom: 15,
-          backgroundColor:`${colors.text.blueLight}`
+          justifyContent: 'center',
+          paddingBottom: 15,
+          backgroundColor: `${colors.text.blueLight}`,
         }}>
-        {groupShowData.groupMembers != null ?
-          groupShowData.groupMembers.map((person, index) => {
-            return (<View><ItemAvatar index={person} /></View>)
-          }) : null
-        }
+        {groupShowData.groupMembers != null
+          ? groupShowData.groupMembers.map((person, index) => {
+              return (
+                <View>
+                  <ItemAvatar index={person} />
+                </View>
+              );
+            })
+          : null}
       </View>
       <GiftedChat
         messages={messages}
-        onSend={(messages) => onSend(messages)}
+        onSend={messages => onSend(messages)}
         user={{
           _id: user.id,
         }}
-
         renderBubble={renderBubble}
         showAvatarForEveryMessage
         alwaysShowSend
@@ -557,7 +568,6 @@ if(groupShowData.event!=null){
         scrollToBottom
         scrollToBottomComponent={scrollToBottomComponent}
       />
-
     </>
   );
 };
