@@ -374,6 +374,7 @@ export const timePollResult = (id) => {
 
         })
         .catch(function (error) {
+            console.log('response', JSON.stringify(error));
              toastShow.show(error.response.data.message);
 
           return error.response.status;
