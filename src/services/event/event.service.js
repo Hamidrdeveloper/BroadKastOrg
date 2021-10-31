@@ -359,7 +359,7 @@ export const timePollResult = (id) => {
 
     var config = {
         method: 'get',
-        url: `http://bugle.eeda.i​/api/v1/Event/TimePollResult?eventId=${id}`,
+        url: `http://bugle.eeda.ir​/api/v1/Event/TimePollResult?eventId=${id}`,
         headers: {
             'Authorization': `Bearer ${TOKEN.data}`,
             'Content-Type': 'application/json'
