@@ -231,42 +231,42 @@ if(groupShowData.event!=null){
     }, 100);
   }, [messagesHub])
 
-  // useEffect(()=>{
+  useEffect(()=>{
     
-  //   timePollResultData.forEach(element => {
-  //     if (element.count > numberPollTime) {
-  //       numberPollTime = element.count
-  //       let dateOrg = new Date(element.date);
-  //       let date = new Date(element.startTime);
-  //       var hours = date.getHours(); // gives the value in 24 hours format
-  //       var AmOrPm = hours >= 12 ? 'PM' : 'AM';
-  //       hours = hours % 12 || 12;
-  //       hours = hours < 10 ? '0' + hours : hours;
-  //       var minutes = date.getMinutes();
-  //       var startTime = hours + ':' + minutes + ' ' + AmOrPm;
+    timePollResultData.forEach(element => {
+      if (element.count > numberPollTime) {
+        numberPollTime = element.count
+        let dateOrg = new Date(element.date);
+        let date = new Date(element.startTime);
+        var hours = date.getHours(); // gives the value in 24 hours format
+        var AmOrPm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+        hours = hours < 10 ? '0' + hours : hours;
+        var minutes = date.getMinutes();
+        var startTime = hours + ':' + minutes + ' ' + AmOrPm;
       
-  //       let dateEnd = new Date(count.endTime);
-  //       var hours = dateEnd.getHours(); // gives the value in 24 hours format
-  //       var AmOrPm = hours >= 12 ? 'PM' : 'AM';
-  //       hours = hours % 12 || 12;
-  //       hours = hours < 10 ? '0' + hours : hours;
-  //       var minutes = dateEnd.getMinutes();
-  //       var endTime = hours + ':' + minutes + ' ' + AmOrPm;
-  //       setTitleDatePollTime(weekday[dateOrg.getDay()]+'\n'+monthNames[dateOrg.getMonth()] + ' ' + dateOrg.getDate())
-  //       setTitleTimePollTime(startTime+'-'+dateEnd)
-  //     }
-  //   })
-  // },[timePollResultData]);
-  // useEffect(()=>{
+        let dateEnd = new Date(count.endTime);
+        var hours = dateEnd.getHours(); // gives the value in 24 hours format
+        var AmOrPm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+        hours = hours < 10 ? '0' + hours : hours;
+        var minutes = dateEnd.getMinutes();
+        var endTime = hours + ':' + minutes + ' ' + AmOrPm;
+        setTitleDatePollTime(weekday[dateOrg.getDay()]+'\n'+monthNames[dateOrg.getMonth()] + ' ' + dateOrg.getDate())
+        setTitleTimePollTime(startTime+'-'+dateEnd)
+      }
+    })
+  },[timePollResultData]);
+  useEffect(()=>{
     
-  //   locPollResultData.forEach(element => {
-  //     if (element.count > numberPollTime) {
-  //       numberPollLocation = element.count
-  //       setTitlePollLocation(`${element.text},${element.place_name},`)
-  //     }
-  //   })
+    locPollResultData.forEach(element => {
+      if (element.count > numberPollTime) {
+        numberPollLocation = element.count
+        setTitlePollLocation(`${element.text},${element.place_name},`)
+      }
+    })
     
-  // },[locPollResultData]);
+  },[locPollResultData]);
   const onSendImage = useCallback((messages = []) => {
     SendMessageToGroupImage(messages)
     setMessages((previousMessages) =>
