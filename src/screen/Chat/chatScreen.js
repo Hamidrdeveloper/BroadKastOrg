@@ -524,21 +524,7 @@ if(groupShowData.event!=null){
           <Text style={{color:"#000",fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
         </View>
       </View>
-      <View
-        style={{
-          height: 50,
-          flexDirection: 'row-reverse',
-          alignItems: 'center',
-          justifyContent: 'center'
-          , paddingBottom: 15,
-          backgroundColor:`${colors.text.blueLight}`
-        }}>
-        {groupShowData.groupMembers != null ?
-          groupShowData.groupMembers.map((person, index) => {
-            return (<View><ItemAvatar index={person} /></View>)
-          }) : null
-        }
-      </View>
+      
       <GiftedChat
         messages={messages}
         onSend={(messages) => onSend(messages)}
