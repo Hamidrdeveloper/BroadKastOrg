@@ -98,8 +98,12 @@ export const GroupShowScreen = ({navigation}) => {
     groupShowData,
     groupShowUser,
   } = useContext(GroupsContext);
-  const [isLocationPoll, setIsLocationPoll] = useState(false);
+  const {
+    locationPollResultUser,
+    timePollResultUser
+  } = useContext(EventsContext);
 
+  const [isLocationPoll, setIsLocationPoll] = useState(false);
   const [isTimepoll, setIsTimepoll] = useState(false);
   const {setTypeGestes, addGestesGu, setAddGestesGu} =
     useContext(FriendshipsContext);
