@@ -549,9 +549,9 @@ const ChatScreen = ({navigation}) => {
             }}
           />
           <View
-            style={{height: '100%', width: '50%', justifyContent: 'center'}}>
+            style={{height: '100%', width: '50%', justifyContent: 'flex-end'}}>
             <View
-              style={{height: 100, width: '100%', justifyContent: 'center'}}>
+              style={{height: 100, width: '100%', justifyContent: 'flex-end'}}>
               <Text style={{color: '#000', fontSize: 20, textAlign: 'center'}}>
                 {titlePollLocation}
               </Text>
