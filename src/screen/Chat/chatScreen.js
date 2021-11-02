@@ -567,7 +567,7 @@ const ChatScreen = ({navigation}) => {
                 backgroundColor: `${colors.brand.blueLight}`,
               }}
             />
-            <View style={{width: `100%`, height: 10}} />
+      
             {/* {
              groupShowData.groupMembers!=null?
           groupShowData.groupMembers.map((person,index) => {
