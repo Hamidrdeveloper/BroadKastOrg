@@ -528,11 +528,29 @@ const ChatScreen = ({ navigation }) => {
           <View style={{ width: `100%`, height:20}} />
           <View style={{ width: `100%`, height:1, backgroundColor: `${colors.brand.blueLight}` }} />
           <View style={{ width: `100%`, height:10}} />
-          {
+          {/* {
              groupShowData.groupMembers!=null?
           groupShowData.groupMembers.map((person,index) => {
             return <View><ItemAvatar person={person} index={index} /></View>;
           }):null
+} */}
+ {
+          [{ 'id': '8',
+          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
+          { 'id': '7',
+          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
+          { 'id': '4',
+          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
+          { 'id': '5',
+          'userId': 'b2aa478b-302e-487b-9937-2672a346a155'},
+          { 'id': '2',
+          'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
+          { 'id': '0',
+          'userId': '8f814c8c-e7c7-4a2a-8640-befd2252b3dd'},
+          { 'id': '1',
+          'userId': '9840c9b5-2588-49ec-afd4-ed2a33f75fff'}].map((person,index) => {
+            return <View><ItemAvatar person={person} index={index} /></View>;
+          })
 }
         
         </View>
