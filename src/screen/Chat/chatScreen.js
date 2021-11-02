@@ -532,7 +532,7 @@ const ChatScreen = ({navigation}) => {
                 {titleTimePollTime}
               </Text>
             </View>
-            <View style={{width: `100%`, height: 20}} />
+            <View style={{width: `100%`, height: 10}} />
             <View
               style={{
                 width: `100%`,
