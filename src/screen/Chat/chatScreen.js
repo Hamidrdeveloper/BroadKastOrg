@@ -517,13 +517,13 @@ const ChatScreen = ({navigation}) => {
             width: '100%',
             flexDirection: 'row',
             backgroundColor: `#f5fbfb`,
-            height: 180,
+            height: 160,
             alignItems: 'center',
           }}>
           <View
-            style={{height: '100%', width: '50%', justifyContent: 'center'}}>
+            style={{height: '100%', width: '50%', justifyContent: 'flex-end'}}>
             <View
-              style={{height: 100, width: '100%', justifyContent: 'center'}}>
+              style={{height: 100, width: '100%', justifyContent:  'flex-end'}}>
               <Text style={{color: '#000', fontSize: 20, textAlign: 'center'}}>
                 {titleDatePollTime}
               </Text>
