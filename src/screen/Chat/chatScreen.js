@@ -517,7 +517,7 @@ const ChatScreen = ({navigation}) => {
             width: '100%',
             flexDirection: 'row',
             backgroundColor: `#f5fbfb`,
-            height: 160,
+            height: 180,
             alignItems: 'center',
           }}>
           <View
