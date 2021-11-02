@@ -1,9 +1,14 @@
+/* eslint-disable prettier/prettier */
 import * as React from 'react';
 
 
 import  {SafeArea,TextIntro,ViewCenter,WellcomeText,SpaceDircton,SpaceButton,ButtonNextArrow}  from './wellcome.styles';
 import ApiCalendar from 'react-google-calendar-api';
-
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 import  Icon  from 'react-native-vector-icons/AntDesign';
 import { TouchableOpacity } from 'react-native';
 import { TOKEN } from '../../utils/env';
@@ -133,15 +138,15 @@ useEffect(() => {
       if (pars != null) {
         if (pars.id != null) {
           Navigation.nav=navigation;
-          navigation.dispatch(
-            CommonActions.reset({
-              index: 0,
-              routes: [
-                { name: 'Home' },
+          // navigation.dispatch(
+          //   CommonActions.reset({
+          //     index: 0,
+          //     routes: [
+          //       { name: 'Home' },
 
-              ],
-            })
-          );
+          //     ],
+          //   })
+          // );
         }
       }
       }
@@ -157,6 +162,11 @@ useEffect(() => {
   }
 
 useEffect(() => {
+  GoogleSignin.configure({
+    scopes: ['https://www.googleapis.com/auth/drive'], // We want   read and write access
+    webClientId: "<CLIENT_ID>", // REPLACE WITH YOUR ACTUAL  CLIENT ID !
+    offlineAccess: true
+});
   ApiCalendar.handleAuthClick();
   console.log('ApiCalendar.sign',ApiCalendar.sign);
 
