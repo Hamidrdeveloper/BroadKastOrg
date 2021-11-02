@@ -512,16 +512,18 @@ const ChatScreen = ({ navigation }) => {
 
       </ViewTopRowHeader>
 
-      <View style={{ width: '100%', flexDirection: 'row',backgroundColor:`#f5fbfb` ,height:130,alignItems:'center' }}>
+      <View style={{ width: '100%', flexDirection: 'row',backgroundColor:`#f5fbfb` ,height:140,alignItems:'center' }}>
         <View  style={{height:'100%',width:'50%',justifyContent:'center'}}>
           <Text  style={{color:'#000',fontSize:20,textAlign:'center'}}>{titleDatePollTime}</Text>
           <Text style={{color:'#000',fontSize:13,textAlign:'center'} }>{titleTimePollTime}</Text>
         </View>
-        <View style={{ width: 1, height: '70%', backgroundColor: `${colors.brand.blueLight}` }} />
+        <View style={{ width: 1, height: '60%', backgroundColor: `${colors.brand.blueLight}` }} />
         <View  style={{height:'100%',width:'50%',justifyContent:'center'}}>
           <Text style={{color:'#000',fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
           <Text style={{color:'#000',fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
+          <View style={{ width: `100%`, height:10}} />
           <View style={{ width: `100%`, height:1, backgroundColor: `${colors.brand.blueLight}` }} />
+          <View style={{ width: `100%`, height:10}} />
           {
           [{ 'id': '8',
           'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
