@@ -535,7 +535,7 @@ const ChatScreen = ({ navigation }) => {
           }):null
 } */}
  
-   <View style={{flexDirection:'row',width:`100%`}}>
+   <View style={{flexDirection:'row-reverse',width:`100%`}}>
      {
           [{ 'id': '8',
           'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
