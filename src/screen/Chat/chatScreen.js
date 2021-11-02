@@ -554,7 +554,7 @@ const ChatScreen = ({ navigation }) => {
             return <View><ItemAvatar person={person} index={index} /></View>;
           })
         }
-        <Text style={{fontSize:20,color:"#000",paddingRight:`70%`}}>Guests</Text>
+        <Text style={{fontSize:17,color:"#000",paddingRight:`70%`}}>Guests</Text>
           </View>
 
         
