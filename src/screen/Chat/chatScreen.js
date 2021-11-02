@@ -531,7 +531,7 @@ const ChatScreen = ({ navigation }) => {
           </View>
           <View style={{ width: `100%`, height:20}} />
           <View style={{ width: `100%`, height:1, backgroundColor: `${colors.brand.blueLight}` }} />
-          <View style={{ width: `100%`, height:15}} />
+          <View style={{ width: `100%`, height:10}} />
           {/* {
              groupShowData.groupMembers!=null?
           groupShowData.groupMembers.map((person,index) => {
