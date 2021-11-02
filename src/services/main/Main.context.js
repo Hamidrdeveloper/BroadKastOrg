@@ -175,6 +175,7 @@ const clearStorage = async () => {
   const useMainContext = ()=>{
 
     setTimeout(() => {
+      Contacts.requestPermission();
       readData();
     }, 100);
   }

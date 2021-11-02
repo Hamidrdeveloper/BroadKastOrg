@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, {useContext, useEffect, useState} from 'react';
 import { View ,Image,Platform, Text} from 'react-native';
 import { color } from 'react-native-elements/dist/helpers';
@@ -7,6 +8,8 @@ import {
     DrawerItemList,
     DrawerItem
   } from '@react-navigation/drawer';
+import Contacts from 'react-native-contacts';
+
 import { AsyncStorage } from 'react-native';
 import { BackHandler } from 'react-native';
 import { host } from '../../utils/env';
@@ -122,6 +125,7 @@ setUser({
             color: "#fff",
         }}
         onPress={() => {
+          Contacts.requestPermission();
           friendshipListUser();
           props.navigation.navigate('InvateScreen')}}
       />

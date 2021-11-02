@@ -584,13 +584,6 @@ const ChatScreen = ({navigation}) => {
                 backgroundColor: `${colors.brand.blueLight}`,
               }}
             />
-
-            {/* {
-             groupShowData.groupMembers!=null?
-          groupShowData.groupMembers.map((person,index) => {
-            return <View><ItemAvatar person={person} index={index} /></View>;
-          }):null
-} */}
             <View
               style={{
                 flexDirection: 'row-reverse',
@@ -607,12 +600,12 @@ const ChatScreen = ({navigation}) => {
                     );
                   })
                 : null}
-              {groupShowData.groupMembers != null ? (
+              {groupShowData.groupMembers != null ?
                 <Text
                   style={{fontSize: 15, color: '#000', paddingRight: `70%`}}>
                   Guests
                 </Text>
-              ) : null}
+              : null}
             </View>
           </View>
         </View>
