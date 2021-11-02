@@ -521,9 +521,9 @@ const ChatScreen = ({navigation}) => {
             alignItems: 'center',
           }}>
           <View
-            style={{height: '100%', width: '50%', justifyContent: 'flex-end'}}>
+            style={{height: '100%', width: '50%', justifyContent: 'flex-start'}}>
             <View
-              style={{height: 100, width: '100%', justifyContent:  'flex-end'}}>
+              style={{height: 100, width: '100%', justifyContent:  'flex-start'}}>
               <Text style={{color: '#000', fontSize: 20, textAlign: 'center'}}>
                 {titleDatePollTime}
               </Text>
@@ -549,9 +549,9 @@ const ChatScreen = ({navigation}) => {
             }}
           />
           <View
-            style={{height: '100%', width: '50%', justifyContent: 'flex-end'}}>
+            style={{height: '100%', width: '50%', justifyContent: 'flex-start'}}>
             <View
-              style={{height: 100, width: '100%', justifyContent: 'flex-end'}}>
+              style={{height: 100, width: '100%', justifyContent: 'flex-start'}}>
               <Text style={{color: '#000', fontSize: 20, textAlign: 'center'}}>
                 {titlePollLocation}
               </Text>
