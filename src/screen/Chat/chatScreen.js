@@ -521,7 +521,7 @@ const ChatScreen = ({ navigation }) => {
         <View  style={{height:'100%',width:'50%',justifyContent:'center'}}>
           <Text style={{color:'#000',fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
           <Text style={{color:'#000',fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
-          <View style={{ width: `100%`, height:10}} />
+          <View style={{ width: `100%`, height:15}} />
           <View style={{ width: `100%`, height:1, backgroundColor: `${colors.brand.blueLight}` }} />
           <View style={{ width: `100%`, height:10}} />
           {
@@ -542,7 +542,7 @@ const ChatScreen = ({ navigation }) => {
             return <View><ItemAvatar person={person} index={index} /></View>;
           })
 }
-<View style={{ width: `100%`, height:1, backgroundColor: `${colors.brand.blueLight}` }} />
+        
         </View>
       </View>
       <GiftedChat
