@@ -536,7 +536,6 @@ const ChatScreen = ({ navigation }) => {
 } */}
  
    <View style={{flexDirection:'row'}}>
-   <Text style={{fontSize:18,color:"#000",paddingRight:15}}>Guests</Text>
      {
           [{ 'id': '8',
           'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
@@ -555,7 +554,7 @@ const ChatScreen = ({ navigation }) => {
             return <View><ItemAvatar person={person} index={index} /></View>;
           })
         }
-      
+        <Text style={{fontSize:20,color:"#000",paddingRight:15}}>Guests</Text>
           </View>
 
         
