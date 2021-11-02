@@ -244,12 +244,12 @@ const ChatScreen = ({ navigation }) => {
         var startTime = hours + ':' + minutes + ' ' + AmOrPm;
 
         let dateEnd = new Date(element.count.endTime);
-        var hours = dateEnd.getHours(); // gives the value in 24 hours format
-        var AmOrPm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12 || 12;
-        hours = hours < 10 ? '0' + hours : hours;
-        var minutes = dateEnd.getMinutes();
-        var endTime = hours + ':' + minutes + ' ' + AmOrPm;
+        var hours2 = dateEnd.getHours(); // gives the value in 24 hours format
+        var AmOrPm2 = hours2 >= 12 ? 'PM' : 'AM';
+        hours2 = hours2 % 12 || 12;
+        hours2 = hours2 < 10 ? '0' + hours2 : hours2;
+        var minutes2 = dateEnd.getMinutes();
+        var endTime = hours2 + ':' + minutes2 + ' ' + AmOrPm2;
         setTitleDatePollTime(weekday[dateOrg.getDay()] + '\n' + monthNames[dateOrg.getMonth()] + ' ' + dateOrg.getDate());
         setTitleTimePollTime(startTime + '-' + endTime);
       }
