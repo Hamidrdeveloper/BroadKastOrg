@@ -515,16 +515,20 @@ const ChatScreen = ({ navigation }) => {
       {groupShowData.event!=null?
       <View style={{ width: '100%', flexDirection: 'row',backgroundColor:`#f5fbfb` ,height:160,alignItems:'center' }}>
         <View  style={{height:'100%',width:'50%',justifyContent:'center'}}>
+        <View  style={{height:100,width:'100%',justifyContent:'center'}}>
           <Text  style={{color:'#000',fontSize:20,textAlign:'center'}}>{titleDatePollTime}</Text>
           <Text style={{color:'#000',fontSize:13,textAlign:'center'} }>{titleTimePollTime}</Text>
+          </View>
           <View style={{ width: `100%`, height:20}} />
           <View style={{ width: `100%`, height:1, backgroundColor: `${colors.brand.blueLight}` }} />
           <View style={{ width: `100%`, height:10}} />
         </View>
         <View style={{ width: 1, height: '40%', backgroundColor: `${colors.brand.blueLight}` }} />
         <View  style={{height:'100%',width:'50%',justifyContent:'center'}}>
+        <View  style={{height:100,width:'100%',justifyContent:'center'}}>
           <Text style={{color:'#000',fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
           <Text style={{color:'#000',fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
+          </View>
           <View style={{ width: `100%`, height:20}} />
           <View style={{ width: `100%`, height:1, backgroundColor: `${colors.brand.blueLight}` }} />
           <View style={{ width: `100%`, height:15}} />
