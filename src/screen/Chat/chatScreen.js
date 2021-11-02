@@ -251,7 +251,7 @@ const ChatScreen = ({ navigation }) => {
         var minutes = dateEnd.getMinutes();
         var endTime = hours + ':' + minutes + ' ' + AmOrPm;
         setTitleDatePollTime(weekday[dateOrg.getDay()] + '\n' + monthNames[dateOrg.getMonth()] + ' ' + dateOrg.getDate());
-        setTitleTimePollTime(startTime + '-' + dateEnd);
+        setTitleTimePollTime(startTime + '-' + endTime);
       }
     });
   },[timePollResultData]);
