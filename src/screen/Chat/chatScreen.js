@@ -232,7 +232,7 @@ const ChatScreen = ({ navigation }) => {
   useEffect(()=>{
 
     timePollResultData.forEach(element => {
-      console.log(element);
+ 
       if (element.count > numberPollTime) {
         numberPollTime = element.count;
         let dateOrg = new Date(element.date);
@@ -244,7 +244,7 @@ const ChatScreen = ({ navigation }) => {
         var minutes = date.getMinutes();
         var startTime = hours + ':' + minutes + ' ' + AmOrPm;
 
-        let dateEnd = new Date(element.count.endTime);
+        let dateEnd = new Date(element.endTime);
         var hours2 = dateEnd.getHours(); // gives the value in 24 hours format
         var AmOrPm2 = hours2 >= 12 ? 'PM' : 'AM';
         hours2 = hours2 % 12 || 12;
