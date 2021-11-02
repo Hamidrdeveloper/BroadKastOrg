@@ -575,7 +575,7 @@ const ChatScreen = ({navigation}) => {
             return <View><ItemAvatar person={person} index={index} /></View>;
           }):null
 } */}
- <View style={{flexDirection: 'row-reverse', width: `100%`,position:"absolute",bottom:0}}>
+ <View style={{flexDirection: 'row-reverse', width: `100%`,position:"absolute",bottom:10}}>
               {[
                 {id: '8', userId: '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
                 {id: '7', userId: '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
