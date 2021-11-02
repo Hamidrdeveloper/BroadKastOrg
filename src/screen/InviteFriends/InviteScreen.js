@@ -64,28 +64,27 @@ export const InvateScreen = ({navigation}) => {
 
   useEffect(() => {
     try {
-    setTimeout(() => {
-      if (friends != null) {
-        var i = friends.map(object => {
-          return {...object, desc: 0};
-        });
-        console.log(i);
-        setFriends(i);
-      }
+      setTimeout(() => {
+        if (friends != null) {
+          var i = friends.map(object => {
+            return {...object, desc: 0};
+          });
+          console.log(i);
+          setFriends(i);
+        }
 
-      console.log('VALID', listValidUser);
-      setArrayValid([]);
-      setArrayUnValid(allContacts);
+        console.log('VALID', listValidUser);
+        setArrayValid([]);
+        setArrayUnValid(allContacts);
 
-      if (allContacts != null) {
-        var result = allContacts.filter(function (o1) {
-          listValidUser.filter(function (o2) {
-            if (o1.phoneNumbers[0] != null) {
-              var value = o1.phoneNumbers[0].number;
-              var newStr = value.replace(/\s/g, '');
+        if (allContacts != null) {
+          var result = allContacts.filter(function (o1) {
+            listValidUser.filter(function (o2) {
+              if (o1.phoneNumbers[0] != null) {
+                var value = o1.phoneNumbers[0].number;
+                var newStr = value.replace(/\s/g, '');
 
-              if (newStr == o2.phoneNumber) {
-           
+                if (newStr == o2.phoneNumber) {
                   var value = {
                     fullName: o1.fullName,
                     phoneNumbers: o1.phoneNumbers,
@@ -94,52 +93,50 @@ export const InvateScreen = ({navigation}) => {
                     isSelect: 0,
                   };
                   setArrayValid(old => [...old, value]);
-             
-              } else {
+                } else {
+                }
+
+                // return the ones with equal id
               }
-
-              // return the ones with equal id
-            }
+            });
           });
-        });
-      }
+        }
 
-      // eslint-disable-next-line prettier/prettier
-    }, 100);
-  } catch(e) {
-    console.log(e);
-  }
+        // eslint-disable-next-line prettier/prettier
+      }, 100);
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
   useEffect(() => {
     // setArryContacts([])
     try {
-    setTimeout(() => {
-      if (arrayUnValid != null && arrayValid != null) {
-        var myArray = arrayUnValid.filter(
-          ar =>
-            !arrayValid.find(rm => rm.phoneNumbers[0] === ar.phoneNumbers[0]),
-        );
-        var array1 = arrayUnValid.filter(function (o1) {
-          return arrayValid.filter(function (o2) {
-            // eslint-disable-next-line keyword-spacing
-            if (o1.phoneNumbers[0] != null) {
-              // eslint-disable-next-line space-infix-ops
-              // eslint-disable-next-line prettier/prettier
-              if (o1.phoneNumbers[0].number == o2.phoneNumbers[0].number)
-                return;
-            }
+      setTimeout(() => {
+        if (arrayUnValid != null && arrayValid != null) {
+          var myArray = arrayUnValid.filter(
+            ar =>
+              !arrayValid.find(rm => rm.phoneNumbers[0] === ar.phoneNumbers[0]),
+          );
+          var array1 = arrayUnValid.filter(function (o1) {
+            return arrayValid.filter(function (o2) {
+              // eslint-disable-next-line keyword-spacing
+              if (o1.phoneNumbers[0] != null) {
+                // eslint-disable-next-line space-infix-ops
+                // eslint-disable-next-line prettier/prettier
+                if (o1.phoneNumbers[0].number == o2.phoneNumbers[0].number)
+                  return;
+              }
+            });
           });
-        });
-        var interest = [];
-        interest = [...arrayValid, ...arrayUnValid];
+          var interest = [];
+          interest = [...arrayValid, ...arrayUnValid];
 
-        setArryContacts(interest);
-      }
-    }, 100);
-  }catch(e){
-    console.log(e);
-    
-  }
+          setArryContacts(interest);
+        }
+      }, 100);
+    } catch (e) {
+      console.log(e);
+    }
   }, [arrayUnValid, arrayValid]);
 
   const [index, setIndex] = React.useState(0);

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {Text, View} from 'react-native';
 import {
   CardItem,
@@ -57,7 +58,7 @@ export const ItemListAllTab = ({item,nav,setTypeActiveItem}) => {
   var AmOrPm = hoursStart >= 12 ? 'PM' : 'AM';
   hoursStart = hoursStart % 12||12;
   hoursStart=hoursStart<10?'0'+hoursStart:hoursStart;
-  var minutes = dateStart.getMinutes();
+  var minutes = dateStart.getMinutes()<10?'0'+dateStart.getMinutes():dateStart.getMinutes();
   var finalTime = hoursStart + ':' + minutes + ' ' + AmOrPm;
   finalTime; // final time Time - 22:10
   const {
