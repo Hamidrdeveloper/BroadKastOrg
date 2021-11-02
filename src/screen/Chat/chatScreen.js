@@ -598,15 +598,21 @@ const ChatScreen = ({navigation}) => {
                 position: 'absolute',
                 bottom: 10,
               }}>
-              {  groupShowData.groupMembers!=null?
-          groupShowData.groupMembers.map((person,index) => {
-            return <View><ItemAvatar person={person} index={index} /></View>;
-          }):<Text style={{fontSize: 15, color: '#000', paddingRight: 10}}>
-          0
-        </Text>}
-              <Text style={{fontSize: 15, color: '#000', paddingRight: `70%`}}>
-                Guests
-              </Text>
+              {groupShowData.groupMembers != null
+                ? groupShowData.groupMembers.map((person, index) => {
+                    return (
+                      <View>
+                        <ItemAvatar person={person} index={index} />
+                      </View>
+                    );
+                  })
+                : null}
+              {groupShowData.groupMembers != null ? (
+                <Text
+                  style={{fontSize: 15, color: '#000', paddingRight: `70%`}}>
+                  Guests
+                </Text>
+              ) : null}
             </View>
           </View>
         </View>
