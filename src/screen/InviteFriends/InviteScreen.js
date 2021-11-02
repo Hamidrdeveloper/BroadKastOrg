@@ -80,6 +80,7 @@ export const InvateScreen = ({navigation}) => {
         if (allContacts != null) {
           var result = allContacts.filter(function (o1) {
             listValidUser.filter(function (o2) {
+              if(o1.phoneNumbers!=null){
               if (o1.phoneNumbers[0] != null) {
                 var value = o1.phoneNumbers[0].number;
                 var newStr = value.replace(/\s/g, '');
@@ -98,6 +99,7 @@ export const InvateScreen = ({navigation}) => {
 
                 // return the ones with equal id
               }
+            }
             });
           });
         }
@@ -120,12 +122,14 @@ export const InvateScreen = ({navigation}) => {
           var array1 = arrayUnValid.filter(function (o1) {
             return arrayValid.filter(function (o2) {
               // eslint-disable-next-line keyword-spacing
+              if(o1.phoneNumbers!=null){
               if (o1.phoneNumbers[0] != null) {
                 // eslint-disable-next-line space-infix-ops
                 // eslint-disable-next-line prettier/prettier
                 if (o1.phoneNumbers[0].number == o2.phoneNumbers[0].number)
                   return;
               }
+            }
             });
           });
           var interest = [];
