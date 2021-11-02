@@ -534,7 +534,9 @@ const ChatScreen = ({ navigation }) => {
             return <View><ItemAvatar person={person} index={index} /></View>;
           }):null
 } */}
- {
+ 
+   <View style={{flexDirection:'row'}}>
+     {
           [{ 'id': '8',
           'userId': '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
           { 'id': '7',
@@ -551,7 +553,10 @@ const ChatScreen = ({ navigation }) => {
           'userId': '9840c9b5-2588-49ec-afd4-ed2a33f75fff'}].map((person,index) => {
             return <View><ItemAvatar person={person} index={index} /></View>;
           })
-}
+        }
+        <Text style={{fontSize:20,color:"#000",paddingRight:15}}>Guests</Text>
+          </View>
+
         
         </View>
       </View>
