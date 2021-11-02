@@ -527,7 +527,7 @@ const ChatScreen = ({ navigation }) => {
           <Text style={{color:'#000',fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
           <View style={{ width: `100%`, height:20}} />
           <View style={{ width: `100%`, height:1, backgroundColor: `${colors.brand.blueLight}` }} />
-          <View style={{ width: `100%`, height:10}} />
+          <View style={{ width: `100%`, height:15}} />
           {/* {
              groupShowData.groupMembers!=null?
           groupShowData.groupMembers.map((person,index) => {
