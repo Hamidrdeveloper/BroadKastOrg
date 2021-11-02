@@ -517,7 +517,7 @@ const ChatScreen = ({ navigation }) => {
           <Text  style={{color:'#000',fontSize:20,textAlign:'center'}}>{titleDatePollTime}</Text>
           <Text style={{color:'#000',fontSize:13,textAlign:'center'} }>{titleTimePollTime}</Text>
         </View>
-        <View style={{ width: 1, height: '55%', backgroundColor: `${colors.brand.blueLight}` }} />
+        <View style={{ width: 1, height: '40%', backgroundColor: `${colors.brand.blueLight}` }} />
         <View  style={{height:'100%',width:'50%',justifyContent:'center'}}>
           <Text style={{color:'#000',fontSize:20,textAlign:'center'}}>{titlePollLocation}</Text>
           <Text style={{color:'#000',fontSize:13,textAlign:'center'}}>{disPollLocation}</Text>
