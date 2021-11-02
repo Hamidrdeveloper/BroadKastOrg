@@ -567,15 +567,14 @@ const ChatScreen = ({navigation}) => {
                 backgroundColor: `${colors.brand.blueLight}`,
               }}
             />
-            <View style={{width: `100%`, height: 10}} />
+            {/* <View style={{width: `100%`, height: 10}} /> */}
             {/* {
              groupShowData.groupMembers!=null?
           groupShowData.groupMembers.map((person,index) => {
             return <View><ItemAvatar person={person} index={index} /></View>;
           }):null
 } */}
-          </View>
-          <View style={{flexDirection: 'row-reverse', width: `100%`}}>
+ <View style={{flexDirection: 'row-reverse', width: `100%`}}>
               {[
                 {id: '8', userId: '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
                 {id: '7', userId: '5f6e0f10-8d89-4f82-bbd5-0cb02f6c0d1a'},
@@ -595,6 +594,8 @@ const ChatScreen = ({navigation}) => {
                 Guests
               </Text>
             </View>
+          </View>
+          
         </View>
       ) : null}
       <GiftedChat
