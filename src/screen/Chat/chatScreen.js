@@ -232,6 +232,7 @@ const ChatScreen = ({ navigation }) => {
   useEffect(()=>{
 
     timePollResultData.forEach(element => {
+      console.log(element);
       if (element.count > numberPollTime) {
         numberPollTime = element.count;
         let dateOrg = new Date(element.date);
