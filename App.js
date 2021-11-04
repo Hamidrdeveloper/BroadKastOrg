@@ -142,23 +142,21 @@ export default class App extends React.Component {
   render() {
     return (
       <>
-        <Button onPress={e => this.handleItemClick(e, 'sign-in')}>
-          sign-in
-        </Button>
-        <Button onPress={e => this.handleItemClick(e, 'sign-out')}>
-          sign-out
-        </Button>
-        <Button onPress={e => this.getUserInfo()}>get user info</Button>
-        <Button onConPresslick={e => this.listUpcomingEvents()}>
-          list upcoming events
-        </Button>
-        <Button onPress={e => this.listAllEvents()}>list all events</Button>
-        <Button onPress={e => this.updateEvent()}>update an Event</Button>
-        <Button onPress={e => this.createEventFromNow()}>
-          create an Event from now
-        </Button>
-        <Button onPress={e => this.createEvent()}>create an Event</Button>
-        {/* <div>{`${this.state.sign ? "true" : "false"}`}</div> */}
+        <Button 
+        title=" sign-in"
+        onPress={e => this.handleItemClick(e, 'sign-in')}/>
+         
+      
+        <Button  title="sign-out"onPress={e => this.handleItemClick(e, 'sign-out')}/>
+        <Button  title=" sign-in"onPress={e => this.getUserInfo()}>get user info</Button>
+        <Button  title="list upcoming events"onConPresslick={e => this.listUpcomingEvents()}/>
+        <Button  title="list all events"onPress={e => this.listAllEvents()}/>
+        <Button  title="update an Event"onPress={e => this.updateEvent()}/>
+        <Button  title=" create an Event from now"onPress={e => this.createEventFromNow()}/>
+         
+        
+        <Button title="create an Event" onPress={e => this.createEvent()}/>
+      
       </>
     );
   }
