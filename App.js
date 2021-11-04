@@ -1,26 +1,31 @@
-
+/* eslint-disable prettier/prettier */
 // import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import React from "react";
-import { ThemeProvider } from "styled-components/native";
-// import * as firebase from "firebase";
+import React from 'react';
+import {ThemeProvider} from 'styled-components/native';
+import ApiCalendar from "react-google-calendar-api";
 
+// import * as firebase from "firebase";
+import {Button} from 'react-native';
 // import {
 //   useFonts as useOswald,
 //   Oswald_400Regular,
 // } from "@expo-google-fonts/oswald";
 // import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
-import { theme } from "./src/infrastructure/theme";
-import { Navigation } from "./src/infrastructure/navigation";
-import { AuthenticationContextProvider } from "./src/services/signup/sgnup.context";
-import { GroupsContext, GroupsContextProvider } from "./src/services/group/group.context";
-import { EventsContextProvider } from "./src/services/event/event.context";
-import { RemindersContextProvider } from "./src/services/reminder/reminder.context";
-import { FriendshipsContextProvider } from "./src/services/friendship/friendship.context";
-import { FileUploadContextProvider } from "./src/services/fileUpload/fileUpload.context";
-import { LocationContextProvider } from "./src/services/location/location.context";
-import { HubConnectionProvider } from "./src/services/hubConnection/hubConnection.context";
-import { MainContextProvider } from "./src/services/main/Main.context";
+import {theme} from './src/infrastructure/theme';
+import {Navigation} from './src/infrastructure/navigation';
+import {AuthenticationContextProvider} from './src/services/signup/sgnup.context';
+import {
+  GroupsContext,
+  GroupsContextProvider,
+} from './src/services/group/group.context';
+import {EventsContextProvider} from './src/services/event/event.context';
+import {RemindersContextProvider} from './src/services/reminder/reminder.context';
+import {FriendshipsContextProvider} from './src/services/friendship/friendship.context';
+import {FileUploadContextProvider} from './src/services/fileUpload/fileUpload.context';
+import {LocationContextProvider} from './src/services/location/location.context';
+import {HubConnectionProvider} from './src/services/hubConnection/hubConnection.context';
+import {MainContextProvider} from './src/services/main/Main.context';
 
 // import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 
@@ -37,48 +42,124 @@ import { MainContextProvider } from "./src/services/main/Main.context";
 //   firebase.initializeApp(firebaseConfig);
 // }
 
-export default function App() {
-  // const [oswaldLoaded] = useOswald({
-  //   Oswald_400Regular,
-  // });
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // sign: ApiCalendar.sign
+    };
 
-  // const [latoLoaded] = useLato({
-  //   Lato_400Regular,
-  // });
+    // this.signUpdate = this.signUpdate.bind(this);
+    // ApiCalendar.onLoad(() => {
+    //   ApiCalendar.listenSign(this.signUpdate);
+    // });
 
-  // if (!oswaldLoaded || !latoLoaded) {
-  //   return null;
+    this.handleItemClick = this.handleItemClick.bind(this);
+  }
+
+  // signUpdate(sign) {
+  //   this.setState({ sign }, () => console.log(this.state.sign));
   // }
 
-  return (
-    <>
-      <ThemeProvider theme={theme}>
+  handleItemClick(event, name) {
+    if (name === 'sign-in') {
+      ApiCalendar.handleAuthClick();
+      console.log('logged in');
+    } else if (name === 'sign-out') {
+      ApiCalendar.handleSignoutClick();
+      console.log('logged out');
+    }
+  }
 
-        <AuthenticationContextProvider>
+  async getUserInfo() {
+    if (ApiCalendar.sign) {
+      const response = await ApiCalendar.getBasicUserProfile();
+      console.log(response);
+    }
+  }
 
-          <FileUploadContextProvider>
-          <FriendshipsContextProvider>
-          <RemindersContextProvider>
-          <EventsContextProvider>
+  listUpcomingEvents() {
+    if (ApiCalendar.sign)
+      ApiCalendar.listUpcomingEvents(10).then(({result}) => {
+        console.log('upcomsing events', result.items);
+      });
+  }
 
-            <LocationContextProvider>
-        <GroupsContextProvider>
-        <HubConnectionProvider>
-          <MainContextProvider >
-          <Navigation />
-          </MainContextProvider>
+  listAllEvents() {
+    if (ApiCalendar.sign)
+      ApiCalendar.listEvents({
+        // timeMin: new Date().toISOString(),
+        // timeMax: new Date().addDays(10).toISOString(),
+        maxResults: 10,
+        orderBy: 'updated',
+      }).then(({result}) => {
+        console.log(result.items);
+      });
+  }
 
-          </HubConnectionProvider>
-          </GroupsContextProvider>
-          </LocationContextProvider>
-          </EventsContextProvider>
-          </RemindersContextProvider>
-          </FriendshipsContextProvider>
-          </FileUploadContextProvider>
+  updateEvent() {
+    const eId = '7eppmkfbhi4gtvvapv9hvej1lm';
+    const event = {
+      summary: 'changed name to meet30june for demo purposes',
+    };
+    ApiCalendar.updateEvent(event, eId).then(res => {
+      console.log(res);
+    });
 
-        </AuthenticationContextProvider>
-      </ThemeProvider>
+    ApiCalendar.getEvent(eId).then(console.log);
+  }
 
-    </>
-  );
+  createEventFromNow() {
+    const eventFromNow = {
+      summary: 'Poc Dev From Now',
+      time: 180,
+    };
+
+    ApiCalendar.createEventFromNow(eventFromNow)
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
+  }
+
+  createEvent() {
+    let stDate = '2021-07-01T12:00:00+05:30';
+    let endDate = '2021-07-01T15:00:00+05:30';
+    const event = {
+      summary: 'new event created',
+      description: 'demo of create event function',
+      start: {
+        dateTime: stDate,
+      },
+      end: {
+        dateTime: endDate,
+      },
+    };
+
+    ApiCalendar.createEvent(event)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+      <>
+        <Button onPress={e => this.handleItemClick(e, 'sign-in')}>
+          sign-in
+        </Button>
+        <Button onPress={e => this.handleItemClick(e, 'sign-out')}>
+          sign-out
+        </Button>
+        <Button onPress={e => this.getUserInfo()}>get user info</Button>
+        <Button onConPresslick={e => this.listUpcomingEvents()}>
+          list upcoming events
+        </Button>
+        <Button onPress={e => this.listAllEvents()}>list all events</Button>
+        <Button onPress={e => this.updateEvent()}>update an Event</Button>
+        <Button onPress={e => this.createEventFromNow()}>
+          create an Event from now
+        </Button>
+        <Button onPress={e => this.createEvent()}>create an Event</Button>
+        {/* <div>{`${this.state.sign ? "true" : "false"}`}</div> */}
+      </>
+    );
+  }
 }
