@@ -52,11 +52,12 @@ const eventFromNow = {
   summary: 'Poc Dev From Now',
   time: 480,
 };
+GoogleSignin.configure({
+  webClientId: '669150360489-22dfh2obcgsd8idr2hbpf2b5834vrf6q.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
+  offlineAccess: true
+});
 export const WellcomeScreen = ({navigation}) => {
-  GoogleSignin.configure({
-    webClientId: '669150360489-22dfh2obcgsd8idr2hbpf2b5834vrf6q.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
-    offlineAccess: true
-  });
+  
   useEffect(() => {
     Contacts.requestPermission();
     setTimeout(() => {
