@@ -68,7 +68,7 @@ export default class App extends React.Component {
   // signUpdate(sign) {
   //   this.setState({ sign }, () => console.log(this.state.sign));
   // }
-   signIn = async () => {
+  async signIn() {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
