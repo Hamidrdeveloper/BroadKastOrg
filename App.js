@@ -70,10 +70,13 @@ export default class App extends React.Component {
   // }
   async signIn() {
     try {
+      console.log("Start google")
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       this.setState({ userInfo });
     } catch (error) {
+      console.log(error+"");
+
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
       } else if (error.code === statusCodes.IN_PROGRESS) {
