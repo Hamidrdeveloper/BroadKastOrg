@@ -19,6 +19,11 @@ import {
   GroupsContext,
   GroupsContextProvider,
 } from './src/services/group/group.context';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 import {EventsContextProvider} from './src/services/event/event.context';
 import {RemindersContextProvider} from './src/services/reminder/reminder.context';
 import {FriendshipsContextProvider} from './src/services/friendship/friendship.context';
@@ -41,7 +46,10 @@ import {MainContextProvider} from './src/services/main/Main.context';
 // if (!firebase.apps.length) {
 //   firebase.initializeApp(firebaseConfig);
 // }
-
+GoogleSignin.configure({
+  webClientId: '669150360489-22dfh2obcgsd8idr2hbpf2b5834vrf6q.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
+  offlineAccess: true
+});
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -60,7 +68,23 @@ export default class App extends React.Component {
   // signUpdate(sign) {
   //   this.setState({ sign }, () => console.log(this.state.sign));
   // }
-
+   signIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      this.setState({ userInfo });
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
+    }
+  };
   handleItemClick(event, name) {
     if (name === 'sign-in') {
       ApiCalendar.handleAuthClick();
@@ -144,7 +168,7 @@ export default class App extends React.Component {
       <>
         <Button 
         title=" sign-in"
-        onPress={e => this.handleItemClick(e, 'sign-in')}/>
+        onPress={e => this.signIn()}/>
          
       
         <Button  title="sign-out"onPress={e => this.handleItemClick(e, 'sign-out')}/>
