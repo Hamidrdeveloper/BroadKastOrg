@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"
+\
+
+
+
+
+
+
+
+
+
+
+ encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -31,7 +43,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>nhyfytdtrdrtdrtdtrdtts5w533</string>
+				<string>669150360489-22dfh2obcgsd8idr2hbpf2b5834vrf6q.apps.googleusercontent.com</string>
 			</array>
 		</dict>
 	</array>
