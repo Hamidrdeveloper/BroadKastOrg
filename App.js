@@ -53,6 +53,7 @@ GoogleSignin.configure({
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    this.gapi = null;
     this.state = {
       // sign: ApiCalendar.sign
     };
@@ -177,9 +178,13 @@ export default class App extends React.Component {
       },
     };
 
-    ApiCalendar.createEvent(event)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    this.gapi = window['gapi'];
+        const script = document.createElement('script');
+        script.src = 'https://apis.google.com/js/api.js';
+        document.body.appendChild(script);
+        script.onload = () => {
+            window['gapi'].load('client:auth2', this.initClient);
+        };
   }
 
   render() {
