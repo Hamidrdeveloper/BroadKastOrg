@@ -16,6 +16,7 @@ import {
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+
 import Icon from 'react-native-vector-icons/AntDesign';
 import {TouchableOpacity} from 'react-native';
 import {TOKEN} from '../../utils/env';
@@ -191,6 +192,7 @@ export const WellcomeScreen = ({navigation}) => {
     }
   };
   useEffect(() => {
+    Contacts.requestPermission();
     readData();
   }, []);
 
