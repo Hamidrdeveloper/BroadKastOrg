@@ -178,13 +178,13 @@ export default class App extends React.Component {
       },
     };
 
-    var gapi = window.gapi
-    gapi.client.init({
-      apiKey: "API_KEY",
-      clientId: "CLIENT_ID",
-      discoveryDocs: "DISCOVERY_DOCS",
-      scope: "SCOPES",
-    })
+    this.gapi = window['gapi'];
+        const script = React.createElement('script');
+        script.src = 'https://apis.google.com/js/api.js';
+        document.body.appendChild(script);
+        script.onload = () => {
+            window['gapi'].load('client:auth2', this.initClient);
+        };
   }
 
   render() {
