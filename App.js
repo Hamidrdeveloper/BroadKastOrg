@@ -182,24 +182,24 @@ export default class App extends React.Component {
         script.src = 'https://apis.google.com/js/api.js';
        
         script.onload = () => {
-            window['gapi'].load('client:auth2', this.initClient);
+          window['gapi'].load('client:auth2',()=>{
+            try {
+              window['gapi'].client.init({
+                    apiKey: "AIzaSyB9E1ViQRKOLCSUIxavg6IRMo_wL6WF6pk",
+                    clientId: "669150360489-22dfh2obcgsd8idr2hbpf2b5834vrf6q.apps.googleusercontent.com",
+                    scope: "https://www.googleapis.com/auth/calendar.events"
+                }).then(function (r) {
+                  console.log("Start");
+                    console.log(r);
+                }, function(error) {
+                    console.log(error);
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        });
         };
-        this.gapi.load('client:auth2',()=>{
-          try {
-            this.gapi.client.init({
-                  apiKey: "AIzaSyB9E1ViQRKOLCSUIxavg6IRMo_wL6WF6pk",
-                  clientId: "669150360489-22dfh2obcgsd8idr2hbpf2b5834vrf6q.apps.googleusercontent.com",
-                  scope: "https://www.googleapis.com/auth/calendar.events"
-              }).then(function (r) {
-                console.log("Start");
-                  console.log(r);
-              }, function(error) {
-                  console.log(error);
-              });
-          } catch (error) {
-              console.log(error);
-          }
-      });
+      
   }
 
   render() {
