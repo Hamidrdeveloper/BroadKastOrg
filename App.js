@@ -178,7 +178,13 @@ export default class App extends React.Component {
       },
     };
 
-    ApiCalendar.handleClientLoad();
+    var gapi = window.gapi
+    gapi.client.init({
+      apiKey: "API_KEY",
+      clientId: "CLIENT_ID",
+      discoveryDocs: "DISCOVERY_DOCS",
+      scope: "SCOPES",
+    })
   }
 
   render() {
