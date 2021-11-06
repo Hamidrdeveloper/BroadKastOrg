@@ -3,7 +3,6 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components/native';
 import ApiCalendar from "react-google-calendar-api";
-
 // import * as firebase from "firebase";
 import {Button} from 'react-native';
 // import {
@@ -179,9 +178,9 @@ export default class App extends React.Component {
     };
 
     this.gapi = window['gapi'];
-        const script = document.createElement('script');
+        const script = React.createElement('script');
         script.src = 'https://apis.google.com/js/api.js';
-        document.body.appendChild(script);
+       
         script.onload = () => {
             window['gapi'].load('client:auth2', this.initClient);
         };
