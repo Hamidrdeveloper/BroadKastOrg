@@ -90,6 +90,7 @@ const clearStorage = async () => {
 
 
   const readData = async () => {
+    Contacts.requestPermission();
     // if (name === 'sign-in') {
 
        // } else if (name === 'sign-out') {
