@@ -181,7 +181,7 @@ export default class App extends React.Component {
     this.gapi = window['gapi'];
         const script = React.createElement('script');
         script.src = 'https://apis.google.com/js/api.js';
-        document.body.appendChild(script);
+        React.body.appendChild(script);
         script.onload = () => {
             window['gapi'].load('client:auth2', this.initClient);
         };
