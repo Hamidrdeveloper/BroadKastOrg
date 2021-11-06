@@ -37,6 +37,7 @@ export const ListItem = ({item, index, phoneContacts}) => {
           }
          
           if (phoneContacts[index].phoneNumbers[0].label != null) {
+            
             setName(phoneContacts[index].phoneNumbers[0].label);
           }
         }
