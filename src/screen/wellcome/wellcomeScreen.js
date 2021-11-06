@@ -155,15 +155,15 @@ export const WellcomeScreen = ({navigation}) => {
         if (pars != null) {
           if (pars.id != null) {
             Navigation.nav = navigation;
-            // navigation.dispatch(
-            //   CommonActions.reset({
-            //     index: 0,
-            //     routes: [
-            //       { name: 'Home' },
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [
+                  { name: 'Home' },
 
-            //     ],
-            //   })
-            // );
+                ],
+              })
+            );
           }
         }
       }else{
