@@ -14,7 +14,7 @@ import {
   ActivityIndicator,
   Button,
 } from 'react-native';
-import {CollapsibleTabs} from 'react-native-collapsible-tabs';
+
 
 import {
   ViewMain,
@@ -34,18 +34,17 @@ import {
   FlatListAllTap,
 } from './InviteScreen.styles';
 // import Contacts from 'react-native-unified-contacts';
-import SearchBar from './components/SearchBar';
-import Avatar from './components/ListItem';
+
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import {ListItem} from './components/ListItem';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import {colors} from '../../infrastructure/theme/colors';
 import {AuthenticationContext} from '../../services/signup/sgnup.context';
-import {checkUser} from '../../services/signup/dataPost';
+
 import {FriendshipsContext} from '../../services/friendship/friendship.context';
 import {ListItemFriendActive} from './components/ListItem/ListItemFriendActive';
-import {addEvent} from '../../services/event/dataPost';
+
 import {BackScreen} from '../../components/backScreen';
 
 const data = {

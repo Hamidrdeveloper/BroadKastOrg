@@ -13,7 +13,6 @@ import {
   Image,
   TextInput,
 } from 'react-native';
-import { color } from 'react-native-elements/dist/helpers';
 
 export const ViewMain = styled(View)`
   width: 100%;
