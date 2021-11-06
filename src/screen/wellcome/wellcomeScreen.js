@@ -48,6 +48,7 @@ const config = {
   name: 'SECONDARY_APP2',
 };
 import {CommonActions} from '@react-navigation/native';
+import { useGoogleApi } from '../../react-gapi-master/useGoogleApi';
 const eventFromNow = {
   summary: 'Poc Dev From Now',
   time: 480,
@@ -165,6 +166,8 @@ export const WellcomeScreen = ({navigation}) => {
             // );
           }
         }
+      }else{
+        signIn();
       }
     } catch (e) {
       console.log('dataUser', e);
@@ -188,14 +191,6 @@ export const WellcomeScreen = ({navigation}) => {
     }
   };
   useEffect(() => {
-    signIn();
-    ApiCalendar.handleAuthClick();
-    console.log('ApiCalendar.sign', ApiCalendar.sign);
-
-    if (ApiCalendar.sign)
-      ApiCalendar.listUpcomingEvents(10).then(({result}: any) => {
-        console.log(result.items);
-      });
     readData();
   }, []);
 

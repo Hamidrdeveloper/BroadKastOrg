@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react'
 import { gapiObject } from './gapi'
 import { configureOptions, GoogleApiContext } from './GoogleApiContext'
 
-export function useGoogleApi(options: configureOptions = {}): gapiObject | undefined {
+export const useGoogleApi = (options: configureOptions = {}): gapiObject | undefined  =>{
     const { gapi, configure } = useContext(GoogleApiContext) ?? {}
 
     const [configureState, setConfigureState] = useState<string>()
