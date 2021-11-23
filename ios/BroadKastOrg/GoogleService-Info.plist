@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>669150360489-22dfh2obcgsd8idr2hbpf2b5834vrf6q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.669150360489-22dfh2obcgsd8idr2hbpf2b5834vrf6q</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB9E1ViQRKOLCSUIxavg6IRMo_wL6WF6pk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>669150360489</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.lesson.broadkast</string>
+	<key>PROJECT_ID</key>
+	<string>brodkast</string>
+	<key>STORAGE_BUCKET</key>
+	<string>brodkast.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:669150360489:ios:16b104c0de326431c00ab8</string>
+</dict>
+</plist>

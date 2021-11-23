@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "669150360489",
+    "project_id": "brodkast",
+    "storage_bucket": "brodkast.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669150360489:android:14a6a46c6c5e929bc00ab8",
+        "android_client_info": {
+          "package_name": "com.boradkast_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669150360489-8oa9bi8ork5qife8gf76ep2dj5elodt7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJkKEH8BIyFon-_AHBCyTq1P2OV8sX8kY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669150360489-8oa9bi8ork5qife8gf76ep2dj5elodt7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "669150360489-22dfh2obcgsd8idr2hbpf2b5834vrf6q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lesson.broadkast"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669150360489:android:93a992b03cde753fc00ab8",
+        "android_client_info": {
+          "package_name": "com.broadkastorg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669150360489-8oa9bi8ork5qife8gf76ep2dj5elodt7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJkKEH8BIyFon-_AHBCyTq1P2OV8sX8kY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669150360489-8oa9bi8ork5qife8gf76ep2dj5elodt7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "669150360489-22dfh2obcgsd8idr2hbpf2b5834vrf6q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lesson.broadkast"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
